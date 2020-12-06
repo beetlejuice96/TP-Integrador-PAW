@@ -10,7 +10,6 @@
         <input type="password" name="password" id="password" required>
         <button type="submit">Ingresar</button>
         <a href="">¿Olvidaste tu contraseña?</a>
-
     </form>
 @endsection
 
