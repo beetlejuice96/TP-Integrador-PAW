@@ -25,6 +25,16 @@ Route::get('/register',function (){
     return view('auth.register');
 });
 
+Route::get('/reset',function (){
+    return view('auth.reset');
+});
+
 Route::get('/services',function (){
     return view('web.services');
+});
+
+//Cars
+
+Route::get('/create-car',function (){
+    return view('web.cars-create');
 });
