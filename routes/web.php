@@ -38,3 +38,7 @@ Route::get('/services',function (){
 Route::get('/create-car',function (){
     return view('web.cars-create');
 });
+
+Route::get('/cars',function (){
+    return view('web.cars-index');
+});
