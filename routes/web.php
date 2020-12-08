@@ -42,3 +42,8 @@ Route::get('/create-car',function (){
 Route::get('/cars',function (){
     return view('web.cars-index');
 });
+
+Route::get('/show-car',function (){
+    return view('web.cars-show');
+});
+
