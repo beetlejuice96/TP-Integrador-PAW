@@ -47,3 +47,8 @@ Route::get('/show-car',function (){
     return view('web.cars-show');
 });
 
+Route::get('/locate-car',function (){
+    return view('web.cars-locate');
+});
+
+
