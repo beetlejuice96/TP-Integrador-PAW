@@ -52,3 +52,8 @@ Route::get('/locate-car',function (){
 });
 
 
+//appointments
+Route::get('/appointments-request',function (){
+    return view('web.appointments-request');
+});
+
