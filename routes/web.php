@@ -57,3 +57,6 @@ Route::get('/appointments-request',function (){
     return view('web.appointments-request');
 });
 
+Route::get('/appointments-index',function (){
+    return view('web.appointments-index');
+});
