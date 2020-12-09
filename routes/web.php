@@ -60,3 +60,12 @@ Route::get('/appointments-request',function (){
 Route::get('/appointments-index',function (){
     return view('web.appointments-index');
 });
+
+//varios
+Route::get('/about',function (){
+    return view('web.about');
+});
+Route::get('/contact',function (){
+    return view('web.contact');
+});
+
