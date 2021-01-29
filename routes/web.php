@@ -65,7 +65,13 @@ Route::get('/appointments-index',function (){
 Route::get('/about',function (){
     return view('web.about');
 });
+
 Route::get('/contact',function (){
     return view('web.contact');
+});
+
+//administrator
+Route::get('/administrator',function (){
+    return view('web.administrator-index');
 });
 
