@@ -11,12 +11,10 @@
         <option value="ap-approved">Turnos Confirmados</option>
         <option value="ap-pending" >Turnos Pendientes</option>
         <option value="ap-approved-cancel">Turnos Confirmados - Cancelados</option>
-        <option value="ap-pending-cancel"> Turnos pendientes -cancelados</option>
+        <option value="ap-pending-cancel"> Turnos pendientes - cancelados</option>
     </select>
 
-    <!--TODO las tablas deberian generarse con js, son muchas-->
-
-
+    <!--TODO las tablas deberian generarse con js, son muchas o podrian tener difernentes vistas y luego incluirlas-->
 
 
 @endsection

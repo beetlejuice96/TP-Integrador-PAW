@@ -75,3 +75,13 @@ Route::get('/administrator',function (){
     return view('web.administrator-index');
 });
 
+//moderators
+Route::get('/moderator/appointments',function (){
+    return view('web.moderators-appointments');
+});
+
+Route::get('/moderator/emails',function (){
+    return view('web.moderators-emails');
+});
+
+
