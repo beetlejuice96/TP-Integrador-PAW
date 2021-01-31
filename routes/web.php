@@ -84,4 +84,7 @@ Route::get('/moderator/emails',function (){
     return view('web.moderators-emails');
 });
 
-
+//profile
+Route::get('/profile/myprofile',function (){
+    return view('web.profile-myprofile');
+});

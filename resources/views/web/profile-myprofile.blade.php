@@ -36,6 +36,24 @@
             <label for="numero">
                 <input type="number" name="numero" id="numero" placeholder="Numero" required>
             </label>
+            <label for="localidad">
+                <input type="text" name="localidad" id="localidad" placeholder="Localidad" required>
+            </label>
+
+            <label for="pais">
+                <!--TODO cambiar esto por algo que le de a elegir paises-->
+                <input type="text"  id="pais" name="pais" placeholder="Pais" required>
+            </label>
+
+            <label for="telefono">
+                <input type="text" id="telefono" name="telefono"  placeholder="Telefono" required>
+            </label>
+            <label for="cp">
+                <input type="text" id="cp" name="cp" required>
+            </label>
+
+            <button type="submit" >Guardar</button>
+            <button type="button" id="boton-cancelar">Cancelar</button>
 
         </fieldset>
 
