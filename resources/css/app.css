@@ -1,3 +1,5 @@
-body{
-    background: #1a202c;
+root{
+    background-color: #1a202c;
 }
+
+/*Creo que este archivo esta acá para escribir los css aca, pero despues con un minificador, pasarlos a la carpeta public*/

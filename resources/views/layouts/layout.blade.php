@@ -15,7 +15,7 @@
     <script src="{{ asset('js/app.js') }}?v2" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
     @yield('publics')
