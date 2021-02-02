@@ -79,7 +79,7 @@ services:
       - mechanicsheep
 
 networks:
-  paw:
+  mechanicsheep:
     driver: bridge
 
 volumes:
