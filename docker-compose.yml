@@ -1,15 +1,14 @@
 version: "3.7"
 services:
   app:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: mechanicsheep
+    image: dilanbernabe/mechanicsheep:latest
     container_name: mechanicsheep-app
     restart: unless-stopped
     working_dir: /var/www/
     networks:
       - mechanicsheep
+    labels:
+     - com.centurylinklabs.watchtower.enable:"true"
 
   db:
     image: mysql:5.7
@@ -75,6 +74,16 @@ services:
       - vhostd:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - mechanicsheep
+
+  watchtower:
+    image: v2tec/watchtower
+    environment:
+    - WATCHTOWER_LABEL_ENABLE
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
     networks:
       - mechanicsheep
 
