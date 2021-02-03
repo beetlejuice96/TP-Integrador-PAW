@@ -21,7 +21,7 @@ jobs:
           envkey_APP_ENV: "local"
           envkey_APP_KEY: ""
           envkey_APP_DEBUG: false
-          envkey_APP_URL: "http://staging.mechanicsheep.com.ar"
+          envkey_APP_URL: "http://develop.mechanicsheep.com.ar"
           envkey_DB_CONNECTION: mysql
           envkey_DB_HOST: mechanicsheep-db
           envkey_DB_PORT: 3306
