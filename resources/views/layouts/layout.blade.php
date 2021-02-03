@@ -10,11 +10,12 @@
 
     <title>{{ env('APP_NAME') }} - @yield('location')</title>
 
-    <!--PREGUNTAR PA QUE MIERDA ESTA-->
+    <!--PREGUNTAR PARA QUE SIRVE ESTE ARCHIVO-->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}?v2" defer></script>
 
     <!-- Styles -->
+    <!-- <link href="{{ asset('css/style.css').'?'.time() }}" rel="stylesheet"> this disable cache-->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
