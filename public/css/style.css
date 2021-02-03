@@ -29,9 +29,9 @@
 
     /*blanco*/
     --white:#ffffff;
-    /*TODO help! esta bueno poner la imagen aca?(es el logo provisorio)*/
+    /*TODO help! esta bueno poner la imagen aca?(es el logo provisorio)
     --image-renault-mobile: url(images/renault.png);
-    --image-renault-desktop:url(images/Renault_logo_English.png);
+    --image-renault-desktop:url(images/Renault_logo_English.png);*/
 
     font-size: 17px; /* Font size si es mobile */
 
@@ -52,9 +52,47 @@
 
 .button-primary-a{
     background: var(--yellow-c);
-
 }
 
 /*header*/
+.header__image{
+    margin-top: 1vh;
+    margin-left: 0.5vw;
+    margin-right: 1vw;
+    float:right;
+    width: 7vh;
+    height: 7vh;
+}
+
+.header__titulo{
+    float:right;
+    /*por si se rompe cambiar a px o porcentajes*/
+    margin-top: 3vh;
+    margin-right:15vw;
+}
+
+/*NAV*/
+.header__menu{
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    list-style-type:none;
+    -webkit-font-smoothing:antialiased;
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+}
+
+.header__menu li{
+    padding: 10px 0;
+    font-size: 22px;
+}
+/*end NAV*/
 
 /*end header*/

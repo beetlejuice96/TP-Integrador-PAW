@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 
+<!--location-->
 @section('location')
     Pruebo CICD
 @endsection

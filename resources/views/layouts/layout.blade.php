@@ -23,14 +23,7 @@
 </head>
 
 <body>
-<header>
-    <h1><img src="" alt="Enterprise Logo" > Enterprise Name</h1>
-    <nav>
-        <ul>
-            <!--cargar-->
-        </ul>
-    </nav>
-</header>
+@include('header.header')
 
 <main>
     <header>
