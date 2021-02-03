@@ -2,7 +2,7 @@
 
 <!--location-->
 @section('location')
-    Pruebo CICD
+    Home
 @endsection
 
 @section('content')
