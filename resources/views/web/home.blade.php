@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('location')
-    Home funca
+    Home
 @endsection
 
 @section('content')

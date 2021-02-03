@@ -23,8 +23,13 @@
     --orange-e:#C94C04;
 
 
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 17px; /* Font size si es mobile */
+    /*blanco*/
+    --white:#ffffff;
+
+    /*TODO help! esta bueno poner la imagen aca?(es el logo provisorio)*/
+    --image-renault-mobile: url(images/renault.png);
+    --image-renault-desktop:url(images/Renault_logo_English.png);
+
 
 }
 

@@ -18,7 +18,7 @@
         <label for="textConsult">Escriba aquí su consulta</label>
         <textarea class="" name="mensaje" id="textConsult" rows="3" required></textarea>
 
-        <button type="submit" class="">Enviar</button>
+        <button type="submit" class="button-primary-a">Enviar</button>
     </form>
 
 @endsection
