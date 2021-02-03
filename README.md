@@ -41,20 +41,5 @@ Si descrubre una vulnerabilidad de seguridad dentro del proyecto, envíe un corr
 
 El proyecto es un software de código abierto con licencia bajo la [MIT license](https://opensource.org/licenses/MIT).
 
-[comment]: <> ## Documentación
-
-[comment]: <> [DocumentaciónFinal](Documentacion/)
-
-[comment]: <> ## Credenciales 
-
-[comment]: <> ### Rol de usuario administrador
-
-[comment]: <> * admin@admin.com
-[comment]: <> * administrador
-
-[comment]: <> ### Rol de usuario moderador
-
-[comment]: <> * mod@mod.com
-[comment]: <> * moderador
-
-[comment]: <> Drive del proyecto: https://drive.google.com/drive/folders/1cqZtmRrHaZoF8ttxPow_qxOjWIJQ-ldH?usp=sharing
+## Drive del proyecto: 
+[Acá](https://drive.google.com/drive/folders/1cqZtmRrHaZoF8ttxPow_qxOjWIJQ-ldH?usp=sharing)
