@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('location')
-    Home funca
+    Pruebo CICD
 @endsection
 
 @section('content')
