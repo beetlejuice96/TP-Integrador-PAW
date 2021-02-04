@@ -16,20 +16,20 @@
             <!--fALTA IMAGEN-->
             <p>Service Oficial</p>
             <p>Consultar servicios ofrecidos</p>
-            <a href="" >Ver servicios</a>
+            <a href="" class="buttonCTA buttonCTA-Secondary">Ver servicios</a>
         </li>
 
         <li>
             <!--fALTA IMAGEN-->
             <p>Saca tu turno!</p>
             <p>No esperes más. Vení con nosotros</p>
-            <a href="">Solicitar</a>
+            <a href="" class="buttonCTA buttonCTA-Primary">Solicitar</a>
         </li>
 
         <li>
             <p>Contactanos</p>
             <p>Elegí el medio que prefieras y despejá tus dudas</p>
-            <a  href="" role="button"> Enviar mensaje</a>
+            <a  href="" class="buttonCTA buttonCTA-Secondary"> Enviar mensaje</a>
         </li>
     </ul>
 

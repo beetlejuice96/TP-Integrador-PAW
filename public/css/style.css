@@ -1,11 +1,36 @@
-/*Este es el archivo css principal*/
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import "reset.css";
 
+/* Fonts de Renault */
 @font-face{
     font-family: "RenaultLife-Bold";
-    src: url("font/RenaultLife-Bold.ttf");
+    src: url("/css/font/RenaultLife-Bold.ttf");
 }
+
+@font-face{
+    font-family: "RenaultLife-Light";
+    src: url("/css/font/RenaultLife-Light.ttf");
+}
+
+@font-face{
+    font-family: "RenaultLife-Regular";
+    src: url("/css/font/RenaultLife-Regular.ttf");
+}
+
+@font-face{
+    font-family: "RenaultLife-BoldItalic";
+    src: url("/css/font/RenaultLife-BoldItalic.otf");
+}
+
+@font-face{
+    font-family: "RenaultLife-Italic";
+    src: url("/css/font/RenaultLife-Italic.otf");
+}
+
+@font-face{
+    font-family: "RenaultLife-LightItalic";
+    src: url("/css/font/RenaultLife-LightItalic.otf");
+}
+
 :root{
     /*variaciones de amarillo*/
     --yellow-a: #7D5A02;
@@ -34,8 +59,7 @@
     --image-renault-desktop:url(images/Renault_logo_English.png);*/
 
     font-size: 17px; /* Font size si es mobile */
-
-
+    font-family: RenaultLife-Light;
 }
 
 .Card{
@@ -187,4 +211,40 @@
 
 /*end NAV*/
 
-/*end header*/
+/*Estilo de los buttons*/
+
+.buttonCTA{
+    font-family: RenaultLife-Bold; 
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    padding: 0.5rem 1.5rem;
+}
+
+.buttonCTA::after{
+    margin-left: 1rem;
+    display: inline-block;
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 185.343 185.343" class=""><path d="M51.707 185.343a10.692 10.692 0 0 1-7.593-3.149 10.724 10.724 0 0 1 0-15.175l74.352-74.347L44.114 18.32c-4.194-4.194-4.194-10.987 0-15.175 4.194-4.194 10.987-4.194 15.18 0l81.934 81.934c4.194 4.194 4.194 10.987 0 15.175l-81.934 81.939a10.678 10.678 0 0 1-7.587 3.15z"></path></svg>');
+    height: 0.9rem;
+    width: 0.9rem;
+    transform: translateY(0.2rem) translateX(-0.3rem);	
+}
+
+.buttonCTA-Primary{
+    background-color: #ffce33;
+}
+
+.buttonCTA-Primary:active, .buttonCTA-Primary:hover{
+    background-color: #ffda66;
+}
+
+.buttonCTA-Secondary{
+    background-color: #cccccc;
+}
+
+.buttonCTA-Secondary:active, .buttonCTA-Secondary:hover{
+    background-color: #e1e1e1;
+}
+
+/* Fin estilo de los buttons*/
