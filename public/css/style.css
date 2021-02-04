@@ -33,17 +33,15 @@
 
 :root{
     /*variaciones de amarillo*/
-    --yellow-a: #7D5A02;
-    --yellow-b: #FDCC51;
-    --yellow-c: #fcb705;
-    --yellow-d: #7D6528;
-    --yellow-e: #C99204;
+    --yellow-a: #ffcc33;
+    --yellow-b: #ffde00;
 
     /*variaciones de gris*/
     --grey-a: #333333;
     --grey-b: #666666;
     --grey-c: #999999;
     --grey-d: #cccccc;
+    --grey-e: #e1e1e1;
 
     /*variaciones de naranja*/
     --orange-a:#7D2F02;
@@ -54,6 +52,9 @@
 
     /*blanco*/
     --white:#ffffff;
+
+    /*negro*/
+    --black:#000000;
     /*TODO help! esta bueno poner la imagen aca?(es el logo provisorio)
     --image-renault-mobile: url(images/renault.png);
     --image-renault-desktop:url(images/Renault_logo_English.png);*/
@@ -144,7 +145,7 @@
     margin-bottom: 5px;
     position: relative;
 
-    background: #000000;
+    background: var(--black);
     border-radius: 3px;
 
     z-index: 1;
@@ -215,7 +216,7 @@
 
 .buttonCTA{
     font-family: RenaultLife-Bold; 
-    color: black;
+    color:var(--black);
     text-decoration: none;
     text-transform: uppercase;
     transition: background-color 0.3s;
@@ -232,19 +233,19 @@
 }
 
 .buttonCTA-Primary{
-    background-color: #ffce33;
+    background-color: var(--yellow-a);
 }
 
 .buttonCTA-Primary:active, .buttonCTA-Primary:hover{
-    background-color: #ffda66;
+    background-color: var(--yellow-b);
 }
 
 .buttonCTA-Secondary{
-    background-color: #cccccc;
+    background-color: var(--grey-d);
 }
 
 .buttonCTA-Secondary:active, .buttonCTA-Secondary:hover{
-    background-color: #e1e1e1;
+    background-color: var(--grey-e);
 }
 
 /* Fin estilo de los buttons*/
