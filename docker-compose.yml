@@ -41,8 +41,8 @@ services:
     networks:
       - mechanicsheep
     environment:
-      - VIRTUAL_HOST=staging.mechanicsheep.com.ar
-      - LETSENCRYPT_HOST=staging.mechanicsheep.com.ar
+      - VIRTUAL_HOST=develop.mechanicsheep.com.ar
+      - LETSENCRYPT_HOST=develop.mechanicsheep.com.ar
       - LETSENCRYPT_EMAIL=normandagustin@gmail.com
     depends_on:
       - nginx-proxy
