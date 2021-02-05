@@ -39,7 +39,6 @@
 <hr >
 <footer>
     <address>
-        <h5 class="footer-element footer-link">About us</h5>
         <P class="footer-element">Tel : XXX-XXX-XXX </P>
         <P class="footer-element">Email : <a href="mailto:Renault@MechanicSheep.com.ar" class="footer-email">Renault@MechanicSheep.com.ar</a>.</P>
         <P class="footer-element">Calle no se me ocurre al 1983, Luján</P>

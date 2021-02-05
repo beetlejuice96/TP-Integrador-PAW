@@ -149,11 +149,11 @@ footer{
 
 /* Estilizo los elementos del footer */
 .footer-element{
-    width: 100vw;
+    width: 97vw; /* Si le pongo 100 tiene scroll horizontal */
     background-color: #262626;
     margin-bottom: 0.2rem;
-    padding-top: 1.7rem;
-    padding-bottom: 1.7rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
 }
 
 /* Agrego un texto que diga MECHANICSHEEP SOCIAL antes de los enlaces a las redes, como en el manual de identidad corporativa */
