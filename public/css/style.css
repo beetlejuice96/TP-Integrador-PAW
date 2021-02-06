@@ -96,7 +96,48 @@
 }
 
 /*NAV*/
-.header__hamburguesa>span{
+
+.header__div{
+    display: block;
+    position: relative;
+    top:50px;
+    left: 50px;
+
+    z-index: 1;
+
+    /* esto sirve pa que no se pueda seleccionar texto dentro de esto.*/
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.header__elementoLista{
+    text-decoration: none;
+    color: #232323;
+}
+
+.header__elementoLista:hover{
+    color: tomato;
+}
+
+.header__hamburguesa{
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    /*pa que aparezca la manito*/
+    cursor: pointer;
+
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+
+
+    /*-webkit-touch-callout: none;*/
+}
+
+.header__hamburguesaLinea{
     display: block;
     width: 33px;
     height: 4px;
@@ -106,26 +147,66 @@
     background: #000000;
     border-radius: 3px;
 
+    z-index: 1;
+
+    /*da el origen para que se pueda formar la X , es el centro*/
+    transform-origin: 4px 0px;
 
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    opacity 0.55s ease;
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
 }
+
+.header__hamburguesaLinea:first-child{
+    transform-origin: 0% 0%;
+}
+
+.header__hamburguesaLinea:nth-last-child(2){
+    transform-origin: 0% 100%;
+}
+
+.header__hamburguesa:checked ~ span
+{
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+}
+
+.header__hamburguesa:checked ~ span:nth-last-child(3){
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2,0.2);
+}
+
+.header__hamburguesa:checked ~ span:nth-last-child(2){
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+
 
 .header__menu{
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    list-style-type:none;
+    -webkit-font-smoothing:antialiased;
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
 }
 
-
-
-
-.header__menu.header__elementoLista{
-    display: none;
+.header__menu li{
+    padding: 10px 0;
+    font-size: 22px;
 }
-
-
-.header__menu.header__elementoLista li{
-    margin-right: 2rem;
+.header__hamburguesa:checked ~ ul
+{
+    transform: none;
 }
 
 /*end NAV*/

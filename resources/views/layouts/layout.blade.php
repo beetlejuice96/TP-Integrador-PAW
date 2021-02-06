@@ -41,18 +41,24 @@
 <hr >
 <footer>
     <address>
-        <h5>About us</h5>
-        <P>Tel : XXX-XXX-XXX </P>
-        <P>Email : <a href="mailto:webmaster@example.com">webmaster@example.com</a>.</P>
-        <P>Calle no se me ocurre al 1983, Luján</P>
-
+        <P class="footer-element">Tel : XXX-XXX-XXX </P>
+        <P class="footer-element">Email : <a href="mailto:Renault@MechanicSheep.com.ar" class="footer-email">Renault@MechanicSheep.com.ar</a>.</P>
+        <P class="footer-element">Calle no se me ocurre al 1983, Luján</P>
     </address>
 
-    <ul>
-        <li><a href="https://www.instagram.com">Instagram</a></li>
-        <li><a href="https://www.facebook.com">Facebook</a></li>
-        <li><a href="https://www.whatsapp.com">Whatsapp</a></li>
+    <a class="footer-element footer-link">Contact us</a>
+
+    <a class="footer-element footer-link">Renault Argentina</a>
+
+    <ul class="footer-element social-media">
+        <li><a href="https://www.instagram.com" class="instagram">Instagram</a></li>
+        <li><a href="https://www.facebook.com" class="facebook">Facebook</a></li>
+        <li><a href="https://www.whatsapp.com" class="whatsapp">Whatsapp</a></li>
     </ul>
+
+    <p class="footer-element">Todos los derechos reservados.</p>
+    <p class="footer-element footer-link">Términos y Condiciones</p>
+    <p class="footer-element">© 2021 Renault MechanicSheep</p>
 
 </footer>
 </html>
