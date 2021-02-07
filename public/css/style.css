@@ -75,27 +75,6 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.button-primary-a{
-    background: var(--yellow-c);
-}
-
-/*header*/
-.header__image{
-    margin-top: 1vh;
-    margin-left: 0.5vw;
-    margin-right: 1vw;
-    float:right;
-    width: 7vh;
-    height: 7vh;
-}
-
-.header__titulo{
-    float:right;
-    /*por si se rompe cambiar a px o porcentajes*/
-    margin-top: 3vh;
-    margin-right:15vw;
-}
-
 /*NAV*/
 
 .header__div{
@@ -249,6 +228,44 @@
 }
 
 /* Fin estilo de los buttons*/
+
+/* Body Header */
+
+.body-header-image{
+    height: 2.8rem;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.body-header-titulo{
+    display: inline-block;
+}
+
+/* Creo la animacion para el palito del logo */
+@keyframes animated-logo{
+    0% {transform: translateX(0rem);}
+    15% {transform: translateX(-1.8rem);}
+    25% {transform: translateX(0rem);}
+
+}
+
+/* Establezco la animacion al palito del logo */
+.stick-logo-renault{
+    animation-name: animated-logo;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+/* Fin Body Header */
+
+/* Main Header */
+
+/*main>header{
+    background-color: blue;
+}*/
+
+/* Fin Main Header */
 
 /* Footer*/
 
