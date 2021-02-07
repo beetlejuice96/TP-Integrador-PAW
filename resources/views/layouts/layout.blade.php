@@ -41,14 +41,14 @@
 <hr >
 <footer>
     <address>
-        <P class="footer-element">Tel : XXX-XXX-XXX </P>
-        <P class="footer-element">Email : <a href="mailto:Renault@MechanicSheep.com.ar" class="footer-email">Renault@MechanicSheep.com.ar</a>.</P>
-        <P class="footer-element">Calle no se me ocurre al 1983, Luján</P>
+        <p class="footer-element">Teléfono: <a class="footer-telephone" href="tel:+542323422137">+52 2323 422137</a></p>
+        <P class="footer-element footer-email-paragraph">Email : <a href="mailto:Renault@MechanicSheep.com.ar" class="footer-email">Renault@MechanicSheep.com.ar</a></P>
+        <p class="footer-element"> Dirección: <a class="footer-adress" href="http://maps.google.com/?q=MechanicSheep, Lujan, Buenos Aires, Argentina" target="_blank">Santa Sofía 1673, Luján</a></p>
     </address>
 
-    <a class="footer-element footer-link">Contact us</a>
+    <a href="{{route("contact")}}" class="footer-element footer-link">Contactanos</a>
 
-    <a class="footer-element footer-link">Renault Argentina</a>
+    <a href="https://www.renault.com.ar" target="_blank" class="footer-element footer-link">Renault Argentina</a>
 
     <ul class="footer-element social-media">
         <li><a href="https://www.instagram.com" class="instagram">Instagram</a></li>
@@ -57,7 +57,7 @@
     </ul>
 
     <p class="footer-element">Todos los derechos reservados.</p>
-    <p class="footer-element footer-link">Términos y Condiciones</p>
+    <a href="{{route("terms-and-conditions")}}" class="footer-element footer-link">Términos y Condiciones</a>
     <p class="footer-element">© 2021 Renault MechanicSheep</p>
 
 </footer>

@@ -68,7 +68,7 @@ Route::get('/about',function (){
 
 Route::get('/contact',function (){
     return view('web.contact');
-});
+})->name('contact');
 
 //administrator
 Route::get('/administrator',function (){
@@ -88,3 +88,7 @@ Route::get('/moderator/emails',function (){
 Route::get('/profile/myprofile',function (){
     return view('web.profile-myprofile');
 });
+
+Route::get('/terms-and-conditions',function (){
+    return view('web.terms-and-conditions');
+})->name("terms-and-conditions");

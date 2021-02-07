@@ -4,6 +4,10 @@ class Carga {
             Paw.cargarScript("Nav","js/Nav.js",()=>{
                 let menu=new Nav();
             });
+
+            Paw.cargarScript("Functionalities","js/Functionalities.js",()=>{
+                let menu=new Functionalities();
+            });
         })
     }
 }
