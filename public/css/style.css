@@ -61,6 +61,11 @@
 
     font-size: 17px; /* Font size si es mobile */
     font-family: RenaultLife-Light;
+
+    /* Agrego un gradiente en el background muy suave */
+    background: rgb(51,51,51);
+    background: linear-gradient(90deg, rgba(51,51,51,0.05) 0%, rgba(255,255,255,0) 50%, rgba(51,51,51,0.05) 100%);
+
 }
 
 .Card{
@@ -199,7 +204,8 @@
     text-decoration: none;
     text-transform: uppercase;
     transition: background-color 0.3s;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.5rem;;
+    display: inline-block; /* Sin esto el button se posicionaba sobre los demás elementos */
 }
 
 .buttonCTA::after{
@@ -261,9 +267,16 @@
 
 /* Main Header */
 
-/*main>header{
-    background-color: blue;
-}*/
+main>header{
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    padding: 1rem;
+    text-align: center;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.25112051656600143) 0%, rgba(255,255,255,0) 100%);
+    font-family: RenaultLife-Italic;
+    color: var(--grey-a);
+}
 
 /* Fin Main Header */
 
@@ -285,8 +298,8 @@ footer{
     width: 100vw; /* Si le pongo 100 tiene scroll horizontal */
     background-color: #262626;
     margin-bottom: 0.2rem;
-    padding-top: 1.35rem;
-    padding-bottom: 1.35rem;
+    padding-top: 1.27rem;
+    padding-bottom: 1.27rem;
 }
 
 /* Agrego un texto que diga MECHANICSHEEP SOCIAL antes de los enlaces a las redes, como en el manual de identidad corporativa */
