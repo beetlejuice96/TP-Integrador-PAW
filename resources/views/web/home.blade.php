@@ -5,6 +5,10 @@
     Home
 @endsection
 
+@section('publics')
+    <script src="js/Carousel.js"></script>
+@endsection
+
 @section('content')
     <!--FALTA CAROUSEL-->
 

@@ -1,4 +1,59 @@
-@import "reset.css";
+/* Reset CSS*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.1 | 20191019
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, menu, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+    display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+    display: none;
+}
+body {
+    line-height: 1;
+}
+menu, ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Fin Reset CSS */
 
 /* Fonts de Renault */
 @font-face{
@@ -249,16 +304,29 @@
 }
 
 /* Creo la animacion para el palito del logo */
-@keyframes animated-logo{
+@keyframes animated-logo-stick{
     0% {transform: translateX(0rem);}
     15% {transform: translateX(-1.8rem);}
     25% {transform: translateX(0rem);}
-
 }
 
 /* Establezco la animacion al palito del logo */
-.stick-logo-renault{
-    animation-name: animated-logo;
+.logo-renault-stick{
+    animation-name: animated-logo-stick;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+/* Creo la animacion para el texto del logo */
+@keyframes animated-logo-text{
+    0% {opacity: 1;}
+    15% {opacity: 0;}
+    25% {opacity: 1;}
+}
+
+/* Establezco la animacion al texto del logo */
+.logo-renault-text{
+    animation-name: animated-logo-text;
     animation-duration: 7s;
     animation-iteration-count: infinite;
 }
@@ -284,6 +352,7 @@ main>header{
 
 /* Estilizo el footer */
 footer{
+    overflow: hidden; /* Oculto el scroll horizontal */
     background-color: #202020;
     color: var(--white);
     font-family: RenaultLife-Bold;
@@ -295,7 +364,7 @@ footer{
 
 /* Estilizo los elementos del footer */
 .footer-element{
-    width: 100vw; /* Si le pongo 100 tiene scroll horizontal */
+    width: 100vw;
     background-color: #262626;
     margin-bottom: 0.2rem;
     padding-top: 1.27rem;
@@ -386,3 +455,95 @@ footer{
 }
 
 /*Fin footer*/
+
+/* Carousel */
+
+.img-carousel{
+    display: none;
+}
+
+.img-active{
+    display: block;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.carousel-button-next, .carousel-button-prev{
+    cursor: pointer;
+    position: absolute;
+    width: 20vw;
+    height: 100vh;
+    color:transparent;
+    border: 0;
+}
+
+.carousel-button-next::before,
+.carousel-button-next::after,
+.carousel-button-prev::before,
+.carousel-button-prev::after {
+	display: block;
+	position: absolute;
+	content: " ";
+	width: 2rem;
+	height: 0.2rem;
+	background-color: var(--yellow-a);
+    border-radius: 0.2rem;
+}
+
+.carousel-button-next::before{
+    right: 0.3rem;
+    transform: translateY(-0.5rem) rotate(45deg);
+}
+
+.carousel-button-next::after{
+    right: 0.3rem;
+    transform:rotate(-45deg);
+}
+
+.carousel-button-prev::before{
+    left: 0.3rem;
+    transform:translateY(-0.5rem) rotate(135deg);
+}
+
+.carousel-button-prev::after{
+    left: 0.3rem;
+    transform:rotate(-135deg);
+}
+
+.carousel-button-prev{
+    left: 0;
+    text-align: start;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%);
+}
+
+.carousel-button-next{
+    right: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 100%);
+    text-align: end;
+}
+
+.carousel-thumb{
+    cursor: pointer;
+    background-color: #cdcdcd;
+    height: 1.3rem;
+    border-radius: 15rem;
+    border: 0;
+    margin: 0.5rem;
+}
+
+.carousel-thumb-active{
+    background-color: var(--yellow-a);
+}
+
+.carousel-contenedor-thumbs{
+    transform: translateY(-2.4rem);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100vw;
+}
+
+/* End Carousel */
