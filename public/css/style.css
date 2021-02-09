@@ -136,45 +136,15 @@ table {
 }
 
 /*NAV*/
-
-.header__div{
-    display: block;
-    position: relative;
-    top:50px;
-    left: 50px;
-
-    z-index: 1;
-
-    /* esto sirve pa que no se pueda seleccionar texto dentro de esto.*/
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.header__elementoLista{
-    text-decoration: none;
-    color: #232323;
-}
-
-.header__elementoLista:hover{
-    color: tomato;
-}
-
 .header__hamburguesa{
     display: block;
-    width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
+    grid-area: hamburguesa;
+    margin-top: 2vh;
+    margin-right: -6vw;
+    justify-self: center;
+    z-index: 1;
 
-    /*pa que aparezca la manito*/
     cursor: pointer;
-
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
-
-
-    /*-webkit-touch-callout: none;*/
 }
 
 .header__hamburguesaLinea{
@@ -184,71 +154,87 @@ table {
     margin-bottom: 5px;
     position: relative;
 
-    background: var(--black);
+    background: #000000;
     border-radius: 3px;
 
     z-index: 1;
 
     /*da el origen para que se pueda formar la X , es el centro*/
-    transform-origin: 4px 0px;
+    /*actualizacion, no quedaba en el centro y quedo esto*/
+    transform-origin: 21px 2px;
+
 
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease;
 }
 
 .header__hamburguesaLinea:first-child{
     transform-origin: 0% 0%;
 }
 
-.header__hamburguesaLinea:nth-last-child(2){
-    transform-origin: 0% 100%;
-}
-
-.header__hamburguesa:checked ~ span
-{
+.cerrar > span {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
     background: #232323;
 }
-
-.header__hamburguesa:checked ~ span:nth-last-child(3){
+.cerrar > span:nth-last-child(3){
     opacity: 0;
     transform: rotate(0deg) scale(0.2,0.2);
 }
 
-.header__hamburguesa:checked ~ span:nth-last-child(2){
+.cerrar > span:nth-last-child(2){
     transform: rotate(-45deg) translate(0, -1px);
 }
 
+.header__menu.cerrado{
+    width: 0;
+    transition: width 1.5s;
+}
 
+.header__menu.abierto{
+    width: 60vw;
+    transition: width 1.5s;
+}
 
 .header__menu{
+    background-color: #ffce33;
+    overflow: hidden;
     position: absolute;
-    width: 300px;
-    margin: -100px 0 0 -50px;
-    padding: 50px;
-    padding-top: 125px;
 
+    right: 0;
+    top: 0;
+
+    padding-top: 8vh;
+    height: 100vh;
+
+    z-index: 0;
     list-style-type:none;
     -webkit-font-smoothing:antialiased;
 
-    transform-origin: 0% 0%;
-    transform: translate(-100%, 0);
-
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-
 }
 
-.header__menu li{
-    padding: 10px 0;
-    font-size: 22px;
-}
-.header__hamburguesa:checked ~ ul
-{
-    transform: none;
+
+.header__elementoMenu{
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    /*TODO falta ponerle el color para diferirlo*/
 }
 
+.header__elementoMenu:hover{
+    /*TODO cambiar este color, era solo para probar*/
+    background-color: #7D2F02;
+}
+
+@media (min-width: 1000px) {
+    /*TODO a partir de este width hacer version desktop*/
+    .header__titulo{
+        justify-self: left;
+    }
+
+
+}
 /*end NAV*/
 
 /*Estilo de los buttons*/

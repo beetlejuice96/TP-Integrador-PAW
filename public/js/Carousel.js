@@ -30,8 +30,10 @@ class Carousel{
             if (index == 0)
                 imagenCarousel.classList.add("img-active");
 
+            //this.asignarEventoSwipe(imagenCarousel);
+
             this.tagPadreDelCarousel.appendChild(imagenCarousel);
-            
+
             index++;
         });
 
@@ -39,7 +41,6 @@ class Carousel{
         this.tagPadreDelCarousel.appendChild(this.contenedorThumbs); 
 
         this.agregarListenersDeTeclas();
-
     }
 
     //Set random image active
