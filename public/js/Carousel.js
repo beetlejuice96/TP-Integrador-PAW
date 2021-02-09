@@ -30,17 +30,17 @@ class Carousel{
             if (index == 0)
                 imagenCarousel.classList.add("img-active");
 
-            //this.asignarEventoSwipe(imagenCarousel);
-
-            this.tagPadreDelCarousel.appendChild(imagenCarousel);
+            this.contenedorCarousel.appendChild(imagenCarousel);
 
             index++;
         });
 
         /* Lo agrego cuando ya tiene todos los thumbs cargados*/
-        this.tagPadreDelCarousel.appendChild(this.contenedorThumbs); 
+        this.contenedorCarousel.appendChild(this.contenedorThumbs); 
 
         this.agregarListenersDeTeclas();
+
+        this.tagPadreDelCarousel.appendChild(this.contenedorCarousel);
     }
 
     //Set random image active
@@ -53,20 +53,22 @@ class Carousel{
         this.loadedImages=0;
         this.imageCount=listaImagenes.length;
         this.userInteracted = false;
+        this.contenedorCarousel = Paw.nuevoElemento("article", "", {"class": "carousel"});
+        this.asignarEventoSwipe();
     }
 
     crearProgressBar(){
         this.progressBar = Paw.nuevoElemento("div", "", {"class": "progressBar"});
         this.actualProgress = Paw.nuevoElemento("div", "", {"class": "progress"});
         this.progressBar.appendChild(this.actualProgress);
-        this.tagPadreDelCarousel.appendChild(this.progressBar);
+        this.contenedorCarousel.appendChild(this.progressBar);
     }
 
     actualizarProgressBar(){
         this.loadedImages++;
         let averageOfLoad = (this.loadedImages / this.imageCount) * 100;
         if(averageOfLoad == 100){
-            this.tagPadreDelCarousel.removeChild(this.progressBar);
+            this.contenedorCarousel.removeChild(this.progressBar);
             this.handleEvent();
         }
         else
@@ -77,10 +79,10 @@ class Carousel{
         this.contenedorThumbs = Paw.nuevoElemento("div","",{"name":"contenedorThumbs","class":"carousel-contenedor-thumbs"});
         this.buttonPrevious = Paw.nuevoElemento("button","Prev",{"class": "carousel-button-prev"});
         this.buttonPrevious.addEventListener("click",() =>{this.handleButtonEvent(0)})
-        this.tagPadreDelCarousel.appendChild(this.buttonPrevious);
+        this.contenedorCarousel.appendChild(this.buttonPrevious);
         this.buttonNext = Paw.nuevoElemento("button","Next",{"class": "carousel-button-next"});
         this.buttonNext.addEventListener("click",() =>{this.handleButtonEvent(1)})
-        this.tagPadreDelCarousel.appendChild(this.buttonNext);
+        this.contenedorCarousel.appendChild(this.buttonNext);
     }
 
     crearNuevoThumb(index){
@@ -116,6 +118,29 @@ class Carousel{
             }else if (keyName == "ArrowRight"){
                 this.handleButtonEvent(1);
             }
+        });
+    }
+
+    asignarEventoSwipe(){
+        this.contenedorCarousel.addEventListener("touchstart", (event)=>{
+            this.xDown  =  event.changedTouches[0].clientX;
+        });
+
+        this.contenedorCarousel.addEventListener("touchend", (event)=>{
+            var  xUp  =  event.changedTouches[0].clientX;
+            this.xDiff  = this.xDown  -  xUp;
+            
+            if(this.xDown){
+                if (Math.abs(this.xDiff) !==  0) {
+                    console.log(this.xDiff);
+                    if (this.xDiff  >= 125) {
+                        this.handleButtonEvent(0);
+                    } else  if (this.xDiff  <=  -125) {
+                        this.handleButtonEvent(1);
+                    }
+                }
+            }
+            this.xDown  =  null;
         });
     }
 
