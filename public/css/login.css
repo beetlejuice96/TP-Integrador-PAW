@@ -1,0 +1,14 @@
+.form-register{
+    background-color: var(--yellow-b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Card{
+    background-color: var(--grey-b);
+    display: flex;
+    flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
+    align-items: center;
+    text-align: center;
+
+}
