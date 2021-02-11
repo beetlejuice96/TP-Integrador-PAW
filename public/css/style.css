@@ -139,7 +139,7 @@ table {
 .header__hamburguesa{
     display: block;
     grid-area: hamburguesa;
-    margin-top: 2vh;
+    margin-top: 2.5vh;
     margin-right: -6vw;
     justify-self: center;
     z-index: 1;
@@ -277,16 +277,28 @@ table {
 /* Fin estilo de los buttons*/
 
 /* Body Header */
+header{
+    display: grid;
+    grid-template-areas: "icono titulo hamburguesa";
+}
 
 .body-header-image{
+    grid-area: icono;
     height: 2.8rem;
     margin-left: 0.3rem;
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;
+    margin-right: -20vw;
 }
 
 .body-header-titulo{
-    display: inline-block;
+
+    grid-area: titulo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
 /* Creo la animacion para el palito del logo */
@@ -385,7 +397,7 @@ footer{
     /* Con esto lo ubico a la derecha, separado un poco del borde y alineado en el centro horizontalmente */
     float: right;
     padding-right: 1rem;
-    transform: translateY(-0.1rem);	
+    transform: translateY(-0.1rem);
 
     margin-left: -5rem; /* Con eso traigo el texto de nuevo a la posicion donde queda centrado*/
 }
