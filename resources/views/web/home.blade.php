@@ -5,7 +5,7 @@
     Home
 @endsection
 
-@section('publics')
+@section('public')
     <script src="js/Carousel.js"></script>
 @endsection
 
