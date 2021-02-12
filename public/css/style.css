@@ -461,16 +461,19 @@ footer{
 /* Carousel */
 
 .img-carousel{
-    display: none;
+    display: none; /* Hago que se oculten cuando no estan activas */
 }
 
+/* Cuando las imagenes estan activas, las muestro, ocupando toda la pantalla */
 .img-active{
     display: block;
-    object-fit: cover;
+    object-fit: cover; /* Intenta cubrir siempre toda el width y height */
     width: 100vw;
     height: 100vh;
 }
 
+
+/* Hago que se muestre el pointer cuando esta en hover, oculto todos los estilos del button ya que solo me sirve la funcionalidad */
 .carousel-button-next, .carousel-button-prev{
     cursor: pointer;
     position: absolute;
@@ -549,3 +552,36 @@ footer{
 }
 
 /* End Carousel */
+
+/* Home cards */
+
+.home-card{
+    background: url("/images/homeCard1.jpg") no-repeat center center;
+    width: 100vw;
+    height: 30vh;
+    color: white;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.home-card-title{
+    font-size: 1.5rem;;
+    padding-top: 0.3rem;
+    padding-left: 0.3rem;
+}
+
+.home-card-text{
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+}
+
+.home-card-link{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* End Home cards*/

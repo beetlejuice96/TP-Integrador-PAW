@@ -15,24 +15,24 @@
 
     <!--Three columns of text below the carousel-->
     <ul>
-        <li>
+        <li class="home-card">
             <!--fALTA IMAGEN-->
-            <p>Service Oficial</p>
-            <p>Consultar servicios ofrecidos</p>
-            <a href="" class="buttonCTA buttonCTA-Secondary">Ver servicios</a>
+            <p class="home-card-title">Service Oficial</p>
+            <p class="home-card-text">Consultar servicios ofrecidos</p>
+            <a href="" class="buttonCTA buttonCTA-Secondary home-card-link">Ver servicios</a>
         </li>
 
-        <li>
+        <li class="home-card">
             <!--fALTA IMAGEN-->
-            <p>Saca tu turno!</p>
-            <p>No esperes más. Vení con nosotros</p>
-            <a href="" class="buttonCTA buttonCTA-Primary">Solicitar</a>
+            <p class="home-card-title">Saca tu turno!</p>
+            <p class="home-card-text">No esperes más. Vení con nosotros</p>
+            <a href="" class="buttonCTA buttonCTA-Primary home-card-link">Solicitar</a>
         </li>
 
-        <li>
-            <p>Contactanos</p>
-            <p>Elegí el medio que prefieras y despejá tus dudas</p>
-            <a  href="" class="buttonCTA buttonCTA-Secondary"> Enviar mensaje</a>
+        <li class="home-card">
+            <p class="home-card-title">Contactanos</p>
+            <p class="home-card-text">Elegí el medio que prefieras y despejá tus dudas</p>
+            <a  href="" class="buttonCTA buttonCTA-Secondary home-card-link"> Enviar mensaje</a>
         </li>
     </ul>
 
