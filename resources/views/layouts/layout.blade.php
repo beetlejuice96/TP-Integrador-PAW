@@ -29,8 +29,8 @@
 @include('header.header')
 
 <main>
-    <header>
-        <h1>
+    <header class="header-main">
+        <h1 class="titulo-header-main">
             @yield('location')
         </h1>
     </header>

@@ -133,7 +133,10 @@ table {
 }
 
 .Card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5 );
+}
+.header-main{
+  text-align: center;
 }
 
 /*NAV*/
@@ -278,7 +281,7 @@ table {
 /* Fin estilo de los buttons*/
 
 /* Body Header */
-header{
+body>header{
     display: grid;
     grid-template-areas: "icono titulo hamburguesa";
 }

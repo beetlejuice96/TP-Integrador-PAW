@@ -3,12 +3,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40vh;
 }
 .Card{
-    background-color: var(--grey-b);
+    background-color: var(--grey-a);
     display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
 
 }
+
+
+.input-login{
+    background: transparent;
+    border:0 solid;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: 250ms background ease-in;
+    width: 30vw;
+}
+.input-login:focus{
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+input:focus {
+    outline: 0 transparent solid;
+}
+

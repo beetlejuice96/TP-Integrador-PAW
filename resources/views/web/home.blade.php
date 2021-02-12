@@ -13,7 +13,6 @@
     <!--FALTA CAROUSEL-->
 
 
-
     <!--Three columns of text below the carousel-->
     <ul>
         <li>
