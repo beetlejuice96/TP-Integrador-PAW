@@ -39,19 +39,16 @@
     <!-- START THE FEATURETTES -->
     <!--NO SE SI SON ARTICLE PERO SE ME HIZO LO MAS FAMILIAR PARA ESTO-->
 
-    <section class="home-section">
-        <article class="home-article home-article-first">
-            <h2>Consecionario oficial Renault.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio veniam iusto distinctio exercitationem est incidunt architecto sint! Nulla atque hic quod</p>
-            <img src="{{asset("/images/Article1.jpg")}}" alt="">
-        </article>
+    <article class="home-article home-article-first">
+        <h2>Consecionario oficial Renault.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio veniam iusto distinctio exercitationem est incidunt architecto sint! Nulla atque hic quod</p>
+        <img src="{{asset("/images/Article1.jpg")}}" alt="">
+    </article>
 
-        <article class="home-article home-article-second">
-            <h2 class="home-article-title">Servicio de post venta garantizado.</h2>
-            <p class="home-article-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio veniam iusto distinctio exercitationem est incidunt architecto sint! Nulla atque hic quod 
-            </p>
-            <img src="{{asset("/images/Article1.jpg")}}" alt="">
-        </article>
-    </section>
+    <article class="home-article home-article-second">
+        <h2>Servicio de post venta garantizado.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio veniam iusto distinctio exercitationem est incidunt architecto sint! Nulla atque hic quod</p>
+        <img src="{{asset("/images/Article1.jpg")}}" alt="">
+    </article>
+    
 @endsection
