@@ -21,6 +21,9 @@ class Nav {
         var lineaHamburgesa3= Paw.nuevoElemento("span","",{class:'header__hamburguesaLinea'});
         hamburguesa.appendChild(lineaHamburgesa3);
 
+        var backgroundHamburguesa= Paw.nuevoElemento("div","",{class:'header__hamburguesaBackground'});
+        hamburguesa.appendChild(backgroundHamburguesa);
+
         document.querySelector("body>header").appendChild(hamburguesa);
         return hamburguesa;
     }
@@ -34,6 +37,7 @@ class Nav {
                 this.menu.classList.add('abierto');
                 this.menu.classList.remove('cerrado');
                 this.blurBackground(true);
+                this.clickeableBackground(true);
                 
             }else {
                 this.hamburguesa.classList.remove("cerrar");
@@ -41,6 +45,7 @@ class Nav {
                 this.menu.classList.remove('abierto');
                 this.menu.classList.add('cerrado');
                 this.blurBackground(false);
+                this.clickeableBackground(false);
             }
         })
     }
@@ -56,5 +61,13 @@ class Nav {
             main.classList.remove("blured");
             footer.classList.remove("blured");
         }
+    }
+
+    clickeableBackground(active){
+        var backgroundHamburguesa = document.querySelector(".header__hamburguesaBackground");
+        if(active)
+            backgroundHamburguesa.classList.add("header__hamburguesaBackgroundActive");
+        else
+            backgroundHamburguesa.classList.remove("header__hamburguesaBackgroundActive");
     }
 }
