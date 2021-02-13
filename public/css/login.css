@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 82vh;
 }
 .Card{
     background-color: var(--grey-a);
@@ -11,6 +11,8 @@
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
+    height: 87%;
+    width: 72%
 
 }
 
@@ -23,8 +25,15 @@
     margin: 1rem;
     padding: 0.5rem;
     transition: 250ms background ease-in;
-    width: 30vw;
+    width: 37vw;
 }
+
+.font-white{
+    color: white;
+}
+
+
+
 .input-login:focus{
     background: white;
     color: black;
@@ -33,4 +42,17 @@
 input:focus {
     outline: 0 transparent solid;
 }
+
+
+/*TODO hay que tirira el boton y el a al piso, pero con bottom no funciona*/
+form>a{
+    padding-top: 1vw;
+    font-size: 75%;
+
+}
+form>button{
+    border:0;
+    bottom: 0px;
+}
+
 
