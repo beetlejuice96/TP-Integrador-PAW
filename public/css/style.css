@@ -616,3 +616,68 @@ footer{
 
 
 /* End Home cards*/
+
+/* Home Section - Articles */
+
+.home-article{
+    background-color: rgba(31, 37, 50 ,1);
+    margin: 0.5rem 0.5rem;
+    box-shadow: 0.3rem 0.3rem 15px black;
+}
+
+.home-article{
+    height: 27.5vh;
+    position: relative;
+    color: white;
+}
+
+.home-article>img{
+    position: absolute;
+    display: block;
+    width: 27.5vh;
+    height: 27.5vh;
+}
+
+.home-article>h2{
+    padding-top: 0.3rem;
+    padding-left: 0.3rem;
+    font-size: 0.95rem;
+    width: 46.3vw;
+    height: 5vh;
+    font-family: RenaultLife-Bold;
+    color: var(--yellow-a);
+}
+
+.home-article>p{
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+    width: 46.3vw;
+    height: calc(27.5vh - 5vh);
+}
+
+.home-article-first>img{
+    top: 0;
+    right: 0;
+}
+
+.home-article-second>img{
+    top: 0;
+    left: 0;
+}
+
+.home-article-second>p, .home-article-second>h2{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.home-article-second>p{
+    top: 6.5vh;
+}
+
+.home-article-second{
+    margin-top: 0.5rem;
+}
+
+
+/* End Home Articles */
