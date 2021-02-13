@@ -140,13 +140,32 @@ table {
 }
 
 /*NAV*/
+
+/* Cuando el nav está abierto, blureo el background */
+.blured{
+    filter: blur(2px);
+    transition: 2s; /* Para que no se bluree de golpe, le pongo una transition */
+}
+
+main, footer{ /* Estos son los dos elementos a los que les aplico blur */
+    transition: 2s; /* Para que no se bluree de golpe, le pongo una transition */
+}
+
+/**/
+
+/* Cuando el nav está abierto, le pongo position fixed a el background asi no hay scroll */
+
+.fixed{
+    position: fixed;
+}
+
 .header__hamburguesa{
     display: block;
     grid-area: hamburguesa;
     margin-top: 2.5vh;
     margin-right: -6vw;
     justify-self: center;
-    z-index: 1;
+    z-index: 20;
 
     cursor: pointer;
 }
@@ -161,7 +180,7 @@ table {
     background: #000000;
     border-radius: 3px;
 
-    z-index: 1;
+    z-index: 20; /* Elemento mas alto  por ahora, nivel 20 */
 
     /*da el origen para que se pueda formar la X , es el centro*/
     /*actualizacion, no quedaba en el centro y quedo esto*/
@@ -197,7 +216,7 @@ table {
 }
 
 .header__menu.abierto{
-    width: 60vw;
+    width: 68vw;
     transition: width 1.5s;
 }
 
@@ -244,6 +263,7 @@ table {
 /*Estilo de los buttons*/
 
 .buttonCTA{
+    z-index: 2;
     font-family: RenaultLife-Bold;
     color: var(--black);
     text-decoration: none;
@@ -282,6 +302,14 @@ table {
 
 /* Body Header */
 body>header{
+    z-index: 15; /* Lo pongo 5 niveles mas abajo que el nav */
+
+    /* Con esto lo dejo siempre en la parte de arriba de la pantalla */
+    background-color: var(--white);
+    position: sticky;
+    top: 0;
+    /* */
+    
     display: grid;
     grid-template-areas: "icono titulo hamburguesa";
 }
@@ -345,7 +373,7 @@ main>header{
     background: rgb(0,0,0);
     background:#202020; /*radial-gradient(circle, rgba(0,0,0,0.25112051656600143) 0%, rgba(255,255,255,0) 100%);*/
     font-family: RenaultLife-Italic;
-    color: var(--grey-a);
+    color: var(--white);
 }
 
 /* Fin Main Header */
@@ -556,6 +584,7 @@ footer{
 /* Home cards */
 
 .home-card{
+    z-index: 1;
     background: url("/images/homeCard1.jpg") no-repeat center center;
     width: 100vw;
     height: 30vh;
