@@ -75,42 +75,34 @@ class Nav {
     crearSubMenues(){
         var primerosHijos = this.menu.querySelectorAll(".primerHijo");
         primerosHijos.forEach(primerHijo => {
-            var liPadreSubMenu = primerHijo.parentNode;
-            this.crearSubMenu(primerHijo.getAttribute("value"));
-            this.agregarHermanosAlSubMenu(primerHijo);
-            liPadreSubMenu.appendChild(this.menuAnidado);
+            var liWithButton = this.createLiWithButton(primerHijo.getAttribute("value"));
+            primerHijo.parentNode.parentNode.insertBefore(liWithButton, primerHijo.parentNode);
         });
     }
 
-    crearSubMenu(nombrePadre){
-        this.menuAnidado = Paw.nuevoElemento("ul", "", "");
-        var padre = Paw.nuevoElemento("button", "", "");
-        padre.textContent = nombrePadre;
-        this.agregarAlSubMenu(padre);
-        
-    }
-
-    agregarAlSubMenu(elemento){
-        var liPadre = null;
-        if(elemento.tagName == "A" && !elemento.classList.contains("primerHijo"))
-            liPadre = elemento.parentElement;
+    createLiWithButton(textContent){
+        var menuName = textContent.split(" ").join("-").toLowerCase();
+        var button = Paw.nuevoElemento("button", "", {"value":menuName});
+        button.textContent = textContent;
+        button.addEventListener("touchstart", (event)=>{
+            this.handleSubMenuEvent(button.getAttribute("value"));
+        });
         var li = Paw.nuevoElemento("li", "", "");
-        li.appendChild(elemento);
-        this.menuAnidado.appendChild(li);
-        if(liPadre)
-            liPadre.parentElement.removeChild(liPadre);
+        li.appendChild(button)
+        return li;
     }
 
-    agregarHermanosAlSubMenu(hermanoMayor){
-        var ultimoHermano = false;
-        while(!ultimoHermano){
-            var anchorHermano = hermanoMayor.parentElement.nextElementSibling.childNodes[0];
-            if(anchorHermano.classList.contains("ultimoHijo")){
-                ultimoHermano = true;
+    handleSubMenuEvent(menuName){
+        var subMenuItems = this.menu.querySelectorAll("."+menuName);
+        subMenuItems.forEach(subMenuItem => {
+            if(subMenuItem.classList.contains("header__hamburguesa-hidden")){
+                subMenuItem.classList.remove("header__hamburguesa-hidden");
+                subMenuItem.classList.add("header__hamburguesa-visible");
             }
-            this.agregarAlSubMenu(hermanoMayor);
-            hermanoMayor = anchorHermano;
-        }
-        this.agregarAlSubMenu(hermanoMayor);
+            else{
+                subMenuItem.classList.add("header__hamburguesa-hidden");
+                subMenuItem.classList.remove("header__hamburguesa-visible")
+            }
+        });
     }
 }

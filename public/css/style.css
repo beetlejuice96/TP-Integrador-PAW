@@ -226,17 +226,29 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
     background-color: var(--white);
     overflow: hidden;
     position: absolute;
-
     right: 0;
     top: 0;
-
     padding-top: 8vh;
     height: 100vh;
-
     z-index: 0;
     list-style-type:none;
     -webkit-font-smoothing:antialiased;
+}
 
+@media (min-width: 1000px) {
+    /*TODO a partir de este width hacer version desktop*/
+    .header__titulo{
+        justify-self: left;
+    }
+
+
+}
+
+/* SubMenues del nav */
+
+.header__linkMenu:hover{
+    /*TODO cambiar este color, era solo para probar*/
+    background-color: #7D2F02;
 }
 
 .header__linkMenu{
@@ -249,19 +261,8 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
     /*TODO falta ponerle el color para diferirlo*/
 }
 
-.header__linkMenu:hover{
-    /*TODO cambiar este color, era solo para probar*/
-    background-color: #7D2F02;
-}
+/**/
 
-@media (min-width: 1000px) {
-    /*TODO a partir de este width hacer version desktop*/
-    .header__titulo{
-        justify-self: left;
-    }
-
-
-}
 /*end NAV*/
 
 /*Estilo de los buttons*/
