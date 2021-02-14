@@ -1,19 +1,28 @@
 .form-register{
-    background-color: var(--yellow-b);
+    background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 82vh;
+
 }
 .Card{
-    background-color: var(--grey-a);
     display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
     height: 87%;
-    width: 72%
+    width: 72%;
+    border-radius: 0px;
 
+}
+.Card:before{
+    content: '';
+    position: absolute;
+    background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
+    background-attachment: fixed;
+   backdrop-filter: blur(2px);
 }
 
 
@@ -27,11 +36,13 @@
     transition: 250ms background ease-in;
     width: 37vw;
 }
+.input-login::placeholder{
+    color: white;
+}
 
 .font-white{
     color: white;
 }
-
 
 
 .input-login:focus{

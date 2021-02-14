@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('public')
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login3.css') }}" rel="stylesheet">
 @endsection
 
 @section('location')
@@ -8,8 +8,8 @@
 @endsection
 @section('content')
     <section class="form-register">
-
-        <form action="" method="POST" class="Card">
+        <img src="{{asset("/css/black.jpeg")}}" alt="placeholder" class="logo">
+        <form action="" method="POST" class="card-login">
             <p class="font-white"> Log in</p>
             <!--<label for="email">Email
             </label>-->
@@ -20,6 +20,7 @@
             </label>-->
             <input class="input-login" type="password" name="password" id="password" placeholder="Password" required>
             <button class="buttonCTA buttonCTA-Primary " type="submit">Ingresar</button>
+            <button class="button-google" type="submit">Ingresar con google</button>
             <a class="font-white" href="">¿Olvidaste tu contraseña?</a>
         </form>
     </section>

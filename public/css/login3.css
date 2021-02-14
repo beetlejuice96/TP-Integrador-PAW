@@ -1,0 +1,106 @@
+.form-register{
+    position: relative;
+    background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
+    background-attachment: fixed;
+    height: 100vh;
+}
+.card-login{
+    background: white;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;/*pa tirarlo abajo*/
+    width: 100%;
+    height: 60%;
+    clip-path: polygon(0 29%, 100% 0, 100% 100%, 0% 100%); /*https://bennettfeely.com/clippy/*/
+
+}
+
+.card-login:before{
+
+}
+
+.input-login{
+    background: transparent;
+    border:0 solid;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    color: #000000;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: 250ms background ease-in;
+    width: 37vw;
+}
+
+.input-login::placeholder{
+    color: #000000;
+}
+
+.input-login:focus{
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+
+input:focus {
+    outline: 0 transparent solid;
+}
+
+.buttonCTA{
+    border:0;
+    bottom: 0px;
+}
+
+form>a{
+    font-size: 75%;
+    padding-bottom: 1vw;
+    padding-top: 1vw;
+}
+
+
+/*TODO esta acomodado a ojota, checkear luego*/
+.logo{
+    border-radius: 50%;
+    position: absolute;
+    top: 42%;
+    left: 40%;
+    z-index: 1;
+}
+
+/*boton de google le dejo los pixeles pq catiten me re jode*/
+.button-google{
+    position: relative;
+    background: #DD4B39;
+    white-space: nowrap;
+    color: #FFF; /*mm no se eh*/
+    box-sizing: border-box;
+    margin: 0.2em;
+    padding: 0 15px 0 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.button-google:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 100%;
+    border-right: #BB3F30 1px solid;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+
+.button-google:focus{
+    outline: none;
+}
+
+.buttonCTA{
+    padding: 0.5rem 3rem;
+}
