@@ -1,0 +1,50 @@
+.form-register{
+    position: relative;
+    background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
+    background-attachment: fixed;
+    height: 100vh;
+
+}
+.input-login{
+    background: transparent;
+    border:0 solid;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    color: #000000;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: 250ms background ease-in;
+    width: 37vw;
+}
+.input-login::placeholder{
+    color: #000000;
+}
+
+.input-login:focus{
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+
+input:focus {
+    outline: 0 transparent solid;
+}
+
+.card-register{
+    background: white;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;/*pa tirarlo abajo*/
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 29%, 100% 0, 100% 100%, 0% 100%); /*https://bennettfeely.com/clippy/*/
+
+}
+
+.buttonCTA{
+    padding: 0.5rem 3rem;
+    margin-bottom: 1rem;
+}
