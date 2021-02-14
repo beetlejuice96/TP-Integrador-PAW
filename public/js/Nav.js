@@ -1,6 +1,7 @@
 class Nav {
     constructor() {
         this.menu = document.querySelector(".header__menu");
+        this.crearSubMenues();
         this.menu.classList.add('cerrado');
         this.hamburguesa = this.insertarHamburguesa();
         this.escucharClick();
@@ -69,5 +70,47 @@ class Nav {
             backgroundHamburguesa.classList.add("header__hamburguesaBackgroundActive");
         else
             backgroundHamburguesa.classList.remove("header__hamburguesaBackgroundActive");
+    }
+
+    crearSubMenues(){
+        var primerosHijos = this.menu.querySelectorAll(".primerHijo");
+        primerosHijos.forEach(primerHijo => {
+            var liPadreSubMenu = primerHijo.parentNode;
+            this.crearSubMenu(primerHijo.getAttribute("value"));
+            this.agregarHermanosAlSubMenu(primerHijo);
+            liPadreSubMenu.appendChild(this.menuAnidado);
+        });
+    }
+
+    crearSubMenu(nombrePadre){
+        this.menuAnidado = Paw.nuevoElemento("ul", "", "");
+        var padre = Paw.nuevoElemento("button", "", "");
+        padre.textContent = nombrePadre;
+        this.agregarAlSubMenu(padre);
+        
+    }
+
+    agregarAlSubMenu(elemento){
+        var liPadre = null;
+        if(elemento.tagName == "A" && !elemento.classList.contains("primerHijo"))
+            liPadre = elemento.parentElement;
+        var li = Paw.nuevoElemento("li", "", "");
+        li.appendChild(elemento);
+        this.menuAnidado.appendChild(li);
+        if(liPadre)
+            liPadre.parentElement.removeChild(liPadre);
+    }
+
+    agregarHermanosAlSubMenu(hermanoMayor){
+        var ultimoHermano = false;
+        while(!ultimoHermano){
+            var anchorHermano = hermanoMayor.parentElement.nextElementSibling.childNodes[0];
+            if(anchorHermano.classList.contains("ultimoHijo")){
+                ultimoHermano = true;
+            }
+            this.agregarAlSubMenu(hermanoMayor);
+            hermanoMayor = anchorHermano;
+        }
+        this.agregarAlSubMenu(hermanoMayor);
     }
 }

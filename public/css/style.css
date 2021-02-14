@@ -223,7 +223,7 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
 }
 
 .header__menu{
-    background-color: #ffce33;
+    background-color: var(--white);
     overflow: hidden;
     position: absolute;
 
@@ -239,15 +239,17 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
 
 }
 
-
-.header__elementoMenu{
+.header__linkMenu{
+    display: block;
+    width: 68vw;
+    height: 3vh;
     padding: 1rem;
     text-align: center;
     margin-bottom: 0.5rem;
     /*TODO falta ponerle el color para diferirlo*/
 }
 
-.header__elementoMenu:hover{
+.header__linkMenu:hover{
     /*TODO cambiar este color, era solo para probar*/
     background-color: #7D2F02;
 }
