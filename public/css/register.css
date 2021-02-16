@@ -1,10 +1,7 @@
-.form-register{
-    position: relative;
-    background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
-    background-attachment: fixed;
-    height: 100vh;
-
-}
+/*TODO checkear lo de la imagen de fondo, si se agrega puede que se rompa,
+    ya que el register es muy grande. el clickPath se va a romper siempre :
+    https://css-tricks.com/unfortunately-clip-path-path-is-still-a-no-go/
+    posibles soluciones : https://www.shapedivider.app/  https://getwaves.io/*/
 .input-login{
     background: transparent;
     border:0 solid;
@@ -13,7 +10,7 @@
     margin: 1rem;
     padding: 0.5rem;
     transition: 250ms background ease-in;
-    width: 37vw;
+    width: 40vw;
 }
 .input-login::placeholder{
     color: #000000;
@@ -30,18 +27,10 @@ input:focus {
 }
 
 .card-register{
-    background: white;
-    position: absolute;
-    bottom: 0px;
-    display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
     justify-content: flex-end;/*pa tirarlo abajo*/
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(0 29%, 100% 0, 100% 100%, 0% 100%); /*https://bennettfeely.com/clippy/*/
-
 }
 
 .buttonCTA{
