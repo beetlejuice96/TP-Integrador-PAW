@@ -1,6 +1,9 @@
 class Nav {
     constructor() {
         this.menu = document.querySelector(".header__menu");
+        this.body = document.querySelector("body");
+        this.footer = document.querySelector("footer");
+        this.main = document.querySelector("main");
         this.crearSubMenues();
         this.menu.classList.add('cerrado');
         this.hamburguesa = this.insertarHamburguesa();
@@ -22,8 +25,8 @@ class Nav {
         var lineaHamburgesa3= Paw.nuevoElemento("span","",{class:'header__hamburguesaLinea'});
         hamburguesa.appendChild(lineaHamburgesa3);
 
-        var backgroundHamburguesa= Paw.nuevoElemento("div","",{class:'header__hamburguesaBackground'});
-        hamburguesa.appendChild(backgroundHamburguesa);
+        this.background = Paw.nuevoElemento("div","",{class:'header__hamburguesaBackground'});
+        hamburguesa.appendChild(this.background);
 
         document.querySelector("body>header").appendChild(hamburguesa);
         return hamburguesa;
@@ -39,37 +42,44 @@ class Nav {
                 this.menu.classList.remove('cerrado');
                 this.blurBackground(true);
                 this.clickeableBackground(true);
+                this.evitarScrollBody(true);
                 
             }else {
+                this.evitarScrollBody(true);
                 this.hamburguesa.classList.remove("cerrar");
                 this.hamburguesa.classList.add("abrir");
                 this.menu.classList.remove('abierto');
                 this.menu.classList.add('cerrado');
                 this.blurBackground(false);
                 this.clickeableBackground(false);
+                this.evitarScrollBody(false);
             }
         })
     }
 
     blurBackground(blur){
-        var main = document.querySelector("main");
-        var footer = document.querySelector("footer");
         if(blur){
-            main.classList.add("blured");
-            footer.classList.add("blured");
+            this.main.classList.add("blured");
+            this.footer.classList.add("blured");
         }
         else{
-            main.classList.remove("blured");
-            footer.classList.remove("blured");
+            this.main.classList.remove("blured");
+            this.footer.classList.remove("blured");
         }
     }
 
     clickeableBackground(active){
-        var backgroundHamburguesa = document.querySelector(".header__hamburguesaBackground");
         if(active)
-            backgroundHamburguesa.classList.add("header__hamburguesaBackgroundActive");
+            this.background.classList.add("header__hamburguesaBackgroundActive");
         else
-            backgroundHamburguesa.classList.remove("header__hamburguesaBackgroundActive");
+            this.background.classList.remove("header__hamburguesaBackgroundActive");
+    }
+
+    evitarScrollBody(active){
+        if(active)
+            this.body.classList.add("header__menu-open")
+        else
+            this.body.classList.remove("header__menu-open")
     }
 
     crearSubMenues(){
@@ -86,23 +96,25 @@ class Nav {
         var button = Paw.nuevoElemento("button", "", {"value":menuName, "class":"header__button-menu"});
         button.textContent = textContent;
         button.addEventListener("touchstart", (event)=>{
-            this.handleSubMenuEvent(button.getAttribute("value"));
+            this.handleSubMenuEvent(button.getAttribute("value"), event.target);
         });
         var li = Paw.nuevoElemento("li", "", "");
         li.appendChild(button)
         return li;
     }
 
-    handleSubMenuEvent(menuName){
+    handleSubMenuEvent(menuName, target){
         var subMenuItems = this.menu.querySelectorAll("."+menuName);
         subMenuItems.forEach(subMenuItem => {
             if(subMenuItem.classList.contains("header__hamburguesa-hidden")){
                 subMenuItem.classList.remove("header__hamburguesa-hidden");
                 subMenuItem.classList.add("header__hamburguesa-visible");
+                target.classList.add("header__sub-menu-open")
             }
             else{
                 subMenuItem.classList.add("header__hamburguesa-hidden");
                 subMenuItem.classList.remove("header__hamburguesa-visible")
+                target.classList.remove("header__sub-menu-open")
             }
         });
     }
