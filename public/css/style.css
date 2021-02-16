@@ -224,7 +224,7 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
 
 .header__menu{
     background-color: var(--white);
-    overflow: hidden;
+    overflow: scroll;
     position: absolute;
     right: 0;
     top: 0;
@@ -246,19 +246,33 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
 
 /* SubMenues del nav */
 
-.header__linkMenu:hover{
-    /*TODO cambiar este color, era solo para probar*/
-    background-color: #7D2F02;
+.header__link-menu, .header__button-menu{
+    display: block;
+    width: calc(68vw - 1rem);
+    height: 3vh;
+    padding: 1rem 0rem;
+    padding-left: 1rem;
+    text-align: left;
+    text-decoration: none;
+    color: var(--grey-a);
+    font-family: RenaultLife-Regular;
+    font-size: 1rem;
+    /*TODO falta ponerle el color para diferirlo*/
 }
 
-.header__linkMenu{
-    display: block;
+.header__button-menu{
+    padding-top: 0.8rem;
+    padding-bottom: 1.2rem;
+    height: 8vh;
+    border: 0px;
+    background-color: white;
     width: 68vw;
-    height: 3vh;
-    padding: 1rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    /*TODO falta ponerle el color para diferirlo*/
+    
+}
+
+.header__hamburguesa-hidden{
+    position: absolute;
+    display: none;
 }
 
 /**/

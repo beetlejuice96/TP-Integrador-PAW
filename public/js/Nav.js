@@ -78,11 +78,12 @@ class Nav {
             var liWithButton = this.createLiWithButton(primerHijo.getAttribute("value"));
             primerHijo.parentNode.parentNode.insertBefore(liWithButton, primerHijo.parentNode);
         });
+        this.setAllHidden();
     }
 
     createLiWithButton(textContent){
         var menuName = textContent.split(" ").join("-").toLowerCase();
-        var button = Paw.nuevoElemento("button", "", {"value":menuName});
+        var button = Paw.nuevoElemento("button", "", {"value":menuName, "class":"header__button-menu"});
         button.textContent = textContent;
         button.addEventListener("touchstart", (event)=>{
             this.handleSubMenuEvent(button.getAttribute("value"));
@@ -103,6 +104,13 @@ class Nav {
                 subMenuItem.classList.add("header__hamburguesa-hidden");
                 subMenuItem.classList.remove("header__hamburguesa-visible")
             }
+        });
+    }
+
+    setAllHidden(){
+        var subMenuItems = this.menu.querySelectorAll(".sub-menu-item");
+        subMenuItems.forEach(subMenuItem => {
+            subMenuItem.classList.add("header__hamburguesa-hidden");
         });
     }
 }
