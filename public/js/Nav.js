@@ -40,7 +40,7 @@ class Nav {
                 this.hamburguesa.classList.add("cerrar");
                 this.menu.classList.add('abierto');
                 this.menu.classList.remove('cerrado');
-                this.blurBackground(true);
+                //this.blurBackground(true);
                 this.clickeableBackground(true);
                 this.evitarScrollBody(true);
                 
@@ -50,7 +50,7 @@ class Nav {
                 this.hamburguesa.classList.add("abrir");
                 this.menu.classList.remove('abierto');
                 this.menu.classList.add('cerrado');
-                this.blurBackground(false);
+                //this.blurBackground(false);
                 this.clickeableBackground(false);
                 this.evitarScrollBody(false);
             }
