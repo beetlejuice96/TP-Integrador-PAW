@@ -154,7 +154,7 @@ main, footer{ /* Estos son los dos elementos a los que les aplico blur */
 /**/
 
 /* Esto es un div, para que cuando hagan un touch a la izquierda de la hamburquesa, se cierre */
-.header__hamburguesaBackgroundActive{ 
+.header__hamburguesaBackgroundActive{
     height: 100vh;
     width: 32vw;
     position: absolute;
@@ -372,7 +372,7 @@ body>header{
     position: sticky;
     top: 0;
     /* */
-    
+
     display: grid;
     grid-template-areas: "icono titulo hamburguesa";
 }
@@ -742,3 +742,26 @@ footer{
 
 
 /* End Home Articles */
+
+/*button return to top*/
+.btnRTT{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    border: none;
+    outline: none;
+    background-color: var(--yellow-a);
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 60px;
+    font-size: 18px;
+    font-weight:bold
+
+}
+
+
+.btnRTT:hover{
+    background-color: var(--grey-b);/*cuando se le pasa el mouse por arriba*/
+}
