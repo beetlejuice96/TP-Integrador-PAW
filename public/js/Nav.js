@@ -4,6 +4,8 @@ class Nav {
         this.body = document.querySelector("body");
         this.footer = document.querySelector("footer");
         this.main = document.querySelector("main");
+        this.logo = document.querySelector(".body-header-link");
+        this.titulo = document.querySelector(".body-header-titulo");
         this.crearSubMenues();
         this.menu.classList.add('cerrado');
         this.hamburguesa = this.insertarHamburguesa();
@@ -43,7 +45,11 @@ class Nav {
                 //this.blurBackground(true);
                 this.clickeableBackground(true);
                 this.evitarScrollBody(true);
-                
+                /*TODO checkear si se puede poner el sombreado en el fondo del nav.(no me salio)*/
+                /*this.main.classList.add('overlay');
+                this.logo.classList.add('overlay');
+                this.titulo.classList.add('overlay');*/
+
             }else {
                 this.evitarScrollBody(true);
                 this.hamburguesa.classList.remove("cerrar");
@@ -53,6 +59,9 @@ class Nav {
                 //this.blurBackground(false);
                 this.clickeableBackground(false);
                 this.evitarScrollBody(false);
+               /* this.main.classList.remove('overlay');
+                this.logo.classList.remove('overlay');
+                this.titulo.classList.remove('overlay');*/
             }
         })
     }

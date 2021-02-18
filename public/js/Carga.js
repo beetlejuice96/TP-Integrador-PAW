@@ -9,9 +9,9 @@ class Carga {
                 let menu=new Functionalities();
             });
 
-            Paw.cargarScript("ReturnToTop","js/ReturnToTop.js",()=>{
+            /*Paw.cargarScript("ReturnToTop","js/ReturnToTop.js",()=>{
                 let rtt = new ReturnToTop();
-            })
+            })*/
         })
     }
 }
