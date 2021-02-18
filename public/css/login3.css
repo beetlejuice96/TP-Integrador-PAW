@@ -1,13 +1,17 @@
 .form-register{
-    position: relative;
+    /*position: relative;*/
     background: url("Renault-and-Publicis-Conseil-Clio-Hybrid-hero.jpg");
     background-attachment: fixed;
     height: 100vh;
+    display: flex;
+    /* flex-direction: column; Para que los elementos se muestren en 1 sola columna*/
+    /* justify-content: flex-end;pa tirarlo abajo*/ /* Alinear items desde el final */
+    align-items: flex-end;
 }
 .card-login{
     background: white;
-    position: absolute;
-    bottom: 0px;
+    /*position: absolute;
+    bottom: 0px;*/
     display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
@@ -59,7 +63,7 @@ form>a{
 }
 
 
-/*TODO esta acomodado a ojota, checkear luego*/
+/*TODO esta acomodado a ojota, checkear luego(talvez sacarlo, dificil acomodar)*/
 .logo{
     border-radius: 50%;
     position: absolute;

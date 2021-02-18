@@ -15,10 +15,12 @@ class ReturnToTop {
 
     scrollTop(){
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
-            this.botonRTT.style.display="block";
-
+            //this.botonRTT.style.display="block";
+            this.botonRTT.classList.add('btnRTT-block');
+            this.botonRTT.classList.remove('btnRTT-none');
         }else {
-            this.botonRTT.style.display="none";
+            this.botonRTT.classList.remove('btnRTT-block');
+            this.botonRTT.classList.add('btnRTT-none');
         }
     }
 
