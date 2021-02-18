@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 Route::get('/login',function (){
     return view('auth.login');
-});
+})->name("login");
 
 Route::get('/register',function (){
     return view('auth.register');
-});
+})->name("register");
 
 Route::get('/reset',function (){
     return view('auth.reset');
@@ -31,7 +31,7 @@ Route::get('/reset',function (){
 
 Route::get('/services',function (){
     return view('web.services');
-});
+})->name("services");
 
 //Cars
 
@@ -41,7 +41,7 @@ Route::get('/create-car',function (){
 
 Route::get('/cars',function (){
     return view('web.cars-index');
-});
+})->name("cars");
 
 Route::get('/show-car',function (){
     return view('web.cars-show');
@@ -59,12 +59,12 @@ Route::get('/appointments-request',function (){
 
 Route::get('/appointments-index',function (){
     return view('web.appointments-index');
-});
+})->name("appointments");
 
 //varios
 Route::get('/about',function (){
     return view('web.about');
-});
+})->name("about");
 
 Route::get('/contact',function (){
     return view('web.contact');
@@ -87,7 +87,7 @@ Route::get('/moderator/emails',function (){
 //profile
 Route::get('/profile/myprofile',function (){
     return view('web.profile-myprofile');
-});
+})->name("profile.index");
 
 Route::get('/terms-and-conditions',function (){
     return view('web.terms-and-conditions');

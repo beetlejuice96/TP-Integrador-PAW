@@ -104,7 +104,8 @@ class Nav {
     }
 
     handleSubMenuEvent(menuName, target){
-        var subMenuItems = this.menu.querySelectorAll("."+menuName);
+        var subMenuItems = this.menu.querySelectorAll("[menu="+menuName+"]");
+        console.log(subMenuItems);
         subMenuItems.forEach(subMenuItem => {
             if(subMenuItem.classList.contains("header__hamburguesa-hidden")){
                 subMenuItem.classList.remove("header__hamburguesa-hidden");
