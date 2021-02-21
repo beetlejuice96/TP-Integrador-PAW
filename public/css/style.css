@@ -702,6 +702,9 @@ footer{
     width: 100vw;
 }
 
+.swipe{
+    transform: translateY(-2.4);
+}
 /* End Carousel */
 
 /* Home cards */
@@ -834,4 +837,6 @@ footer{
 .btnRTT-none{
     display: none;
 }
+
+
 
