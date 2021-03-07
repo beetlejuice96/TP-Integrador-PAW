@@ -2,7 +2,7 @@
     ya que el register es muy grande. el clickPath se va a romper siempre :
     https://css-tricks.com/unfortunately-clip-path-path-is-still-a-no-go/
     posibles soluciones : https://www.shapedivider.app/  https://getwaves.io/*/
-.input-login{
+.input-default{
     background: transparent;
     border:0 solid;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -12,11 +12,11 @@
     transition: 250ms background ease-in;
     width: 40vw;
 }
-.input-login::placeholder{
+.input-default::placeholder{
     color: #000000;
 }
 
-.input-login:focus{
+.input-default:focus{
     background: white;
     color: black;
     transition: 250ms background ease-in;

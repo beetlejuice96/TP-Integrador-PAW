@@ -394,6 +394,7 @@ button[value="moderar"]::before{
     transition: background-color 0.3s;
     padding: 0.5rem 1.5rem;;
     display: inline-block; /* Sin esto el button se posicionaba sobre los demás elementos */
+    border:0;
 }
 
 .buttonCTA::after{
@@ -837,6 +838,40 @@ footer{
 .btnRTT-none{
     display: none;
 }
+
+/*INPUT LOGIN*/
+.input-default{
+    background: transparent;
+    border:0 solid;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    color: #000000;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: 250ms background ease-in;
+    width: 37vw;
+}
+
+.input-default::placeholder{
+    color: #000000;
+}
+
+.input-default:focus{
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+
+input:focus {
+    outline: 0 transparent solid;
+}
+
+.card-reset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 

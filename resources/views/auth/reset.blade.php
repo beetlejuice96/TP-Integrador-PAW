@@ -5,16 +5,15 @@
 
 @section('content')
 
-    <form action="" method="POST">
-        <label for="email">Correo Electrónico</label>
-        <input id="email" type="email"   name="email"  required autocomplete="email" autofocus>
+    <form action="" method="POST" class="card-reset">
 
-        <label for="password" >Contraseña</label>
-        <input id="password" type="password" name="password" required autocomplete="new-password">
+        <input id="email" type="email" placeholder="Email" class="input-default" name="email" required autocomplete="email" autofocus>
 
-        <label for="password-confirm" >Confirmar Contraseña</label>
-        <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+        <input id="password" type="password" class="input-default" placeholder="Contraseña" name="password" required autocomplete="new-password">
 
+        <input id="password-confirm" type="password" class="input-default" placeholder="Confirmar contraseña" name="password_confirmation" required autocomplete="new-password">
+
+        <button class="buttonCTA buttonCTA-Primary">Reset</button>
     </form>
 
 @endsection
