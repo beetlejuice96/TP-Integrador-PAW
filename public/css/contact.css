@@ -1,0 +1,31 @@
+label{
+    width: 50%;
+}
+/*
+button{
+    display: block;
+}
+*/
+.buttonCTA{
+   margin: 1rem 1rem 1rem 1rem;
+}
+textarea{
+    width: 50%;
+}
+
+.espacio-inputs{
+    margin: 0 1rem 1rem 1rem;
+}
+.input-default{
+    width: 50%;
+}
+
+form{
+    margin: 1rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
