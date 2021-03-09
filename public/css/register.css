@@ -16,17 +16,17 @@
     color: #000000;
 }
 
+/*FIXME no toma este evento y deberia hacerlo.*/
 .input-default:focus{
     background: white;
     color: black;
     transition: 250ms background ease-in;
-}
-
-input:focus {
     outline: 0 transparent solid;
 }
 
+
 .card-register{
+    display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
