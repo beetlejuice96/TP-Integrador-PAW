@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <main>
+    <main class="cuerpo">
         <h2><strong>Terms and Conditions</strong></h2>
         <p>Welcome to MechanicSheep!</p>
         <p>These terms and conditions outline the rules and regulations for the use of MechanicSheep's Website, located at www.mechanicsheep.com.ar.</p>
