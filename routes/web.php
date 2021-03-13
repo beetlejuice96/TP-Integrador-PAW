@@ -17,9 +17,8 @@ Route::get('/', function () {
     return view('web.home');
 })->name("index");
 
-Route::get('/login',function (){
-    return view('auth.login');
-})->name("login");
+Route::get('/login','Auth\LoginController@login')->name("login_view");
+Route::post('/login', 'Auth\LoginController@authenticate')->name('login');;//redirige al login.
 
 Route::get('/register',function (){
     return view('auth.register');

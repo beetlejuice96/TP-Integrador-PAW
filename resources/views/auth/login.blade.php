@@ -7,13 +7,22 @@
     Login
 @endsection
 @section('content')
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <section class="form-register">
         <img src="{{asset("/css/black.jpeg")}}" alt="placeholder" class="logo">
-        <form action="" method="POST" class="card-login">
+        <form action="{{route('login')}}" method="POST" class="card-login">
+            @csrf
             <p class="font-white"> Log in</p>
             <!--<label for="email">Email
             </label>-->
-            <input class="input-default" name="email" id="email" type="email" placeholder="Username" required autofocus>
+            <input class="input-default" name="email" id="email" type="text" placeholder="Username" required autofocus>
 
             <!--<label for="password">Password
 
