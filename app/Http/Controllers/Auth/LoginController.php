@@ -104,7 +104,7 @@ class LoginController extends Controller
              }
 
              if (Auth::attempt($credentials)){
-                 return redirect(route('index'));
+                 return redirect(route('index'))->with('user-logueado',"Bienvenido!!");
              }
             //dd(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']]));
             return back()->with('error', 'Usuario o password incorrectos');

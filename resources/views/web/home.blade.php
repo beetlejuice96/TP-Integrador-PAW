@@ -10,6 +10,15 @@
 @endsection
 
 @section('content')
+
+    @if (session('user-logueado'))
+        <div class="alert-login">
+            {{ session('user-logueado') }}
+            <button type="button">
+                <span>x</span>
+            </button>
+        </div>
+    @endif
     <!--FALTA CAROUSEL-->
 
 
@@ -50,5 +59,5 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio veniam iusto distinctio exercitationem est incidunt architecto sint! Nulla atque hic quod</p>
         <img src="{{asset("/images/Article1.jpg")}}" alt="">
     </article>
-    
+
 @endsection

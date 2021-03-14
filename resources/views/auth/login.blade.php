@@ -8,10 +8,10 @@
 @endsection
 @section('content')
     @if (session('error'))
-        <div class="alert alert-danger" role="alert">
+        <div >
             {{ session('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <button>
+                <span>&times;</span>
             </button>
         </div>
     @endif
