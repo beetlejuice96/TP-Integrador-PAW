@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,8 @@ Route::get('/', function () {
     return view('web.home');
 })->name("index");
 
-Route::get('/login',function (){
-    return view('auth.login');
-})->name("login");
+Route::get('/login',[LoginController::class,'login'])->name("login_view");
+Route::post('/login', [LoginController::class,'authenticate'])->name('login');;//redirige al login.
 
 Route::get('/register',function (){
     return view('auth.register');

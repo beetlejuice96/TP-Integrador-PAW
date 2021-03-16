@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -40,4 +40,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //verifico que el user exista en la bd.
+    static public function verifierCredentials($credentials): bool
+    {
+        return DB::table('users')
+            ->where('email',$credentials['email'])->exists();
+    }
+
+    public function getUser(String $username ){
+        //return User::where('name',$username)->first;
+    }
+
+    public function loginUser(){
+
+    }
+
+
 }
