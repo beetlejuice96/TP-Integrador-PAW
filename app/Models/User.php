@@ -44,13 +44,8 @@ class User extends Authenticatable
     //verifico que el user exista en la bd.
     static public function verifierCredentials($credentials): bool
     {
-        $user= DB::table('users')
-            ->where('email',$credentials['email'])
-            ->first();
-        if ($user!== null){
-            return true;
-        }
-        return false;
+        return DB::table('users')
+            ->where('email',$credentials['email'])->exists();
     }
 
     public function getUser(String $username ){

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginPostRequest;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -89,24 +93,20 @@ class LoginController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param LoginPostRequest $request
+     * @return Application|RedirectResponse|Redirector
      * @throws ValidationException
      */
-    public function authenticate(Request $request){
-             $credentials = $this->validate($request, [ //valido que lleguen los dos campos y que sean de tipo string.
-                 'email' => 'required|string',
-                 'password' => 'required|string'
-             ]);
+    public function authenticate(LoginPostRequest $request){
 
+            $credentials =  $request->validated();
              $result = User::verifierCredentials($credentials); //mando a verificar estas credenciales al usuario.
              if ($result==false){
                  return back()->with('error', 'Usuario o password no corresponden a usuario activo.');
              }
-
              if (Auth::attempt($credentials)){
                  return redirect(route('index'))->with('user-logueado',"Bienvenido!!");
              }
-            //dd(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']]));
             return back()->with('error', 'Usuario o password incorrectos');
     }
 
