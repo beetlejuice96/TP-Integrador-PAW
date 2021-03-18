@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginPostRequest;
 use App\Models\User;
+use Google_Client;
+use Google_Service_Oauth2;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,8 +15,24 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
+
 class LoginController extends Controller
 {
+    /**
+     * @var Google_Client
+     */
+    private $google_client;
+
+    public function __construct()
+    {
+        $this->google_client = new Google_Client();
+        $this->google_client->setClientId("671153445343-112g93ik9eome4hsrm6oaatl648pq5ev.apps.googleusercontent.com");
+        $this->google_client->setClientSecret("4IkNrP7ZIh1F-iRKRXXKLyTV");
+        $this->google_client->setRedirectUri("http://127.0.0.1:8000/login");
+        $this->google_client->addScope('email');
+        $this->google_client->addScope('profile');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +67,7 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -60,7 +78,7 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -72,7 +90,7 @@ class LoginController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -83,7 +101,7 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
@@ -91,33 +109,54 @@ class LoginController extends Controller
         //
     }
 
-
     /**
      * @param LoginPostRequest $request
      * @return Application|RedirectResponse|Redirector
      * @throws ValidationException
      */
-    public function authenticate(LoginPostRequest $request){
+    public function authenticate(LoginPostRequest $request)
+    {
 
-            $credentials =  $request->validated();
-             $result = User::verifierCredentials($credentials); //mando a verificar estas credenciales al usuario.
-             if ($result==false){
-                 return back()->with('error', 'Usuario o password no corresponden a usuario activo.');
-             }
-             if (Auth::attempt($credentials)){
-                 return redirect(route('index'))->with('user-logueado',"Bienvenido!!");
-             }
-            return back()->with('error', 'Usuario o password incorrectos');
+        $credentials = $request->validated();
+        $result = User::verifierCredentials($credentials); //mando a verificar estas credenciales al usuario.
+        if ($result == false) {
+            return back()->with('error', 'Usuario o password no corresponden a usuario activo.');
+        }
+        if (Auth::attempt($credentials)) {
+            return redirect(route('index'))->with('user-logueado', "Bienvenido!!");
+        }
+        return back()->with('error', 'Usuario o password incorrectos');
     }
 
-    public function login (){
-        return view('auth.login');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     */
+    public function authenticateWithGoogle(Request $request)
+    {
+        //codigo de login
+        $token = $this->google_client->fetchAccessTokenWithAuthCode();
+    }
+
+    public function login()
+    {
+        if (isset($_GET['code'])) {
+            $token = $this->google_client->fetchAccessTokenWithAuthCode($_GET['code']);
+            $this->google_client->setAccessToken($token);
+            $googleAuth = new Google_Service_Oauth2($this->google_client);
+            $googleAccountInfo = $googleAuth->userinfo->get();
+            //hasta este momento puedo recuperar los datos de la persona que se loggea.
+            dd($googleAccountInfo);
+            //TODO se puede seguir redirigiendo a otra pag y cargando estos datos en algun lado.
+            return view();
+        }
+        $google_client = $this->google_client;
+        return view('auth.login', compact('google_client'));
     }
 
     public function username() //Devuelve el campo por el cual se logueara el usuario
     {
         return 'username';
     }
-
-
 }

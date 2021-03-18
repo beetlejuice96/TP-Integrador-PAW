@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     @if (session('error'))
-        <div >
+        <div>
             {{ session('error') }}
             <button>
                 <span>&times;</span>
@@ -22,14 +22,14 @@
             <p class="font-white"> Log in</p>
             <!--<label for="email">Email
             </label>-->
-            <input class="input-default" name="email" id="email" type="text" placeholder="Username" required autofocus>
+            <input class="input-default" name="email" id="email" type="text" placeholder="Username" autofocus>
 
             <!--<label for="password">Password
 
             </label>-->
-            <input class="input-default" type="password" name="password" id="password" placeholder="Password" required>
+            <input class="input-default" type="password" name="password" id="password" placeholder="Password">
             <button class="buttonCTA buttonCTA-Primary " type="submit">Ingresar</button>
-            <button class="button-google" type="submit">Ingresar con google</button>
+            <a class="button-google" href="{{$google_client->createAuthUrl()}}" type="submit">Ingresar con google</a>
             <a class="font-white" href="">¿Olvidaste tu contraseña?</a>
         </form>
     </section>
