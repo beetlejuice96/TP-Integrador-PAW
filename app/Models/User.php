@@ -48,6 +48,8 @@ class User extends Authenticatable
             ->where('email',$credentials['email'])->exists();
     }
 
+
+
     public function getUser(String $username ){
         //return User::where('name',$username)->first;
     }

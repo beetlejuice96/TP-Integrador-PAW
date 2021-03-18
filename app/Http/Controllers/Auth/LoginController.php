@@ -147,12 +147,29 @@ class LoginController extends Controller
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
             //hasta este momento puedo recuperar los datos de la persona que se loggea.
-            dd($googleAccountInfo);
+            /*lo que hice aca es guardar un user para con mi gmail para poder probar el login.
+             * $user = new User();
+            $user->fill([
+               'name'=>$googleAccountInfo->getName(),
+               'email'=>$googleAccountInfo->getEmail(),
+               'password'=> 'prueba123'
+            ]);
+            $user->save();*/
+
+            $credentials = [
+                'email'=>$googleAccountInfo->getEmail()
+            ];
+            $userExiste = User::verifierCredentials($credentials);
+            if ($userExiste){
+                return view('web.home');
+            }
             //TODO se puede seguir redirigiendo a otra pag y cargando estos datos en algun lado.
-            return view();
+            $google_client = $this->google_client;
+            return view('auth.login', compact('google_client'))->with(error, 'usuario inexistente');
         }
         $google_client = $this->google_client;
         return view('auth.login', compact('google_client'));
+
     }
 
     public function username() //Devuelve el campo por el cual se logueara el usuario
