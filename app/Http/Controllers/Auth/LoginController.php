@@ -26,9 +26,9 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->google_client = new Google_Client();
-        $this->google_client->setClientId("671153445343-112g93ik9eome4hsrm6oaatl648pq5ev.apps.googleusercontent.com");
-        $this->google_client->setClientSecret("4IkNrP7ZIh1F-iRKRXXKLyTV");
-        $this->google_client->setRedirectUri("http://127.0.0.1:8000/login");
+        $this->google_client->setClientId(env('CLIENT_ID'));
+        $this->google_client->setClientSecret(env('CLIENT_SECRET'));
+        $this->google_client->setRedirectUri(env('REDIRECT_URI'));
         $this->google_client->addScope('email');
         $this->google_client->addScope('profile');
     }
