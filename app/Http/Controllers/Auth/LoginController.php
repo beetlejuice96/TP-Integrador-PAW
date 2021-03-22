@@ -165,7 +165,7 @@ class LoginController extends Controller
             }
             //TODO se puede seguir redirigiendo a otra pag y cargando estos datos en algun lado.
             $google_client = $this->google_client;
-            return view('auth.login', compact('google_client'))->with(error, 'usuario inexistente');
+            return view('auth.login', compact('google_client'))->with('error', 'usuario inexistente');
         }
         $google_client = $this->google_client;
         return view('auth.login', compact('google_client'));
