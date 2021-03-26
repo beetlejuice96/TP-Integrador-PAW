@@ -6,7 +6,7 @@
     Registrarse
 @endsection
 @section('content')
-    <form action="" method="POST" class="form-register">
+    <form action="{{route('registerPost')}}" method="POST" class="form-register">
         <section class="card-register">
 
             <!--<label for="dni">DNI</label>-->
@@ -16,7 +16,7 @@
              <input type="text" id="name" placeholder="Nombre" name="name" class="input-default" required autocomplete="nombre">
 
             <!-- <label for="apellido">Apellido</label>-->
-             <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="input-default" required autocomplete="apellido">
+             <input type="text" id="lastname" name="lastname" placeholder="Apellido" class="input-default" required autocomplete="apellido">
 
             <!-- <label for="email" >Correo Electrónico</label>-->
              <input id="email" name="email" value="email" class="input-default" placeholder="example@gmail.com" required autocomplete="email">
@@ -36,6 +36,7 @@
 
              </select>
              <button type="submit" class="buttonCTA buttonCTA-Primary">Registrar</button>
+             <a class="buttonCTA buttonCTA-Secondary" href="{{$google_client->createAuthUrl()}}" type="submit">Registrar con Google</a>
         </section>
      </form>
 @endsection

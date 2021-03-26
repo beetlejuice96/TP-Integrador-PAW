@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,9 @@ Route::get('/', function () {
 Route::get('/login',[LoginController::class,'login'])->name("login_view");
 Route::post('/login', [LoginController::class,'authenticate'])->name('login');;//redirige al login.
 
-Route::get('/register',function (){
-    return view('auth.register');
-})->name("register");
+Route::get('/register',[UserController::class,'create'])->name("register"); //redirige al register
+Route::post('/register',[UserController::class,'store'])->name("registerPost");
+
 
 Route::get('/reset',function (){
     return view('auth.reset');
