@@ -7,10 +7,11 @@
 @endsection
 @section('content')
     <form action="{{route('registerPost')}}" method="POST" class="form-register">
+        @csrf
         <section class="card-register">
 
             <!--<label for="dni">DNI</label>-->
-            <input  id="dni" class="input-default" placeholder="NRO DNI" required autocomplete="dni" autofocus>
+            <input type="text" id="dni" name="dni" class="input-default" placeholder="NRO DNI" required autocomplete="dni" autofocus>
 
             <!-- <label for="name">Nombre</label>-->
              <input type="text" id="name" placeholder="Nombre" name="name" class="input-default" required autocomplete="nombre">
@@ -36,6 +37,7 @@
 
              </select>
              <button type="submit" class="buttonCTA buttonCTA-Primary">Registrar</button>
+            <!--TODO cuando este en develop sacarle estas clases de button y ponerle la de google-->
              <a class="buttonCTA buttonCTA-Secondary" href="{{$google_client->createAuthUrl()}}" type="submit">Registrar con Google</a>
         </section>
      </form>

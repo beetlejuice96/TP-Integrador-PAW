@@ -24,10 +24,10 @@ class UserRegisterPostRequets extends FormRequest
     public function rules()
     {
         return [
-            "name"=>'required',
-            "lastname"=>"required",
-            "email"=>'required|string|email|max:255',
-            "password"=>'required|string|confirmed|min:6',
+            'name'=>'required',
+            'lastname'=>'required',
+            'email'=>'required|string',
+            'password'=>'required|string',
             'dni'=>'required'
         ];
     }

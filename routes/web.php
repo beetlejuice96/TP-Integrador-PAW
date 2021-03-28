@@ -24,6 +24,9 @@ Route::post('/login', [LoginController::class,'authenticate'])->name('login');;/
 
 Route::get('/register',[UserController::class,'create'])->name("register"); //redirige al register
 Route::post('/register',[UserController::class,'store'])->name("registerPost");
+// E-mail verification
+//Auth::routes(['verify' => true]); //verificacion de correo.
+Route::get('/register/verify/{code}', [UserController::class,'verify']);
 
 
 Route::get('/reset',function (){

@@ -13,6 +13,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -21,6 +22,7 @@ class UserController extends Controller
      * @var Google_Client
      */
     private $google_client;
+
 
     public function __construct()
     {
@@ -65,7 +67,7 @@ class UserController extends Controller
                 "password" => ""
             ]);
             //verificar si ya existe.
-            if (User::verifierCredentials([$googleAccountInfo->getEmail()])) {
+            if (User::verifierCredentials(['email'=>$googleAccountInfo->getEmail()])) {
                 return view('auth.register')->with('error', 'este usuario ya existe');
             }
             $user->save();
@@ -84,9 +86,12 @@ class UserController extends Controller
     public function store(UserRegisterPostRequets $request)
     {
         //
-        $dates = $request->validated();
 
+        $dates = $request->validated();
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $dates['confirmation_code'] = substr(str_shuffle(str_repeat($pool, 5)), 0, 25);
         //verificar si ya existe.
+
         if (User::verifierCredentials(['email' => $dates['email']])) {
             return view('auth.register')->with('error', 'este usuario ya existe');
         }
@@ -97,13 +102,19 @@ class UserController extends Controller
             'name' => $dates['name'],
             'lastname' => $dates['lastname'],
             'password' => $dates['password'],
-            'email' => $dates['email']
+            'email' => $dates['email'],
+            'confirmation_code'=>$dates['confirmation_code']
         ]);
+
         try {
             $user->save();
+            //FIXME no me devuelve error pero tampoco manda el mail, talvez el problema este en el .env
+            Mail::send('auth.verification', $dates, function($message) use ($dates) {
+                $message->to($dates['email'], $dates['name'])->subject('Por favor confirma tu correo');
+            });
             return view('web.home')->with("exito", "usuario creado con exito!");
         } catch (QueryException $ex) {
-            return view('auth.register')->with('error', "no se pudo crear el usuario");
+            return view('web.home')->with('error', "no se pudo crear el usuario");
         }
     }
 
@@ -151,4 +162,20 @@ class UserController extends Controller
     {
         //
     }
+
+
+    public function verify($code)
+    {
+        $user = User::getUserAuthCode($code);
+
+        if (! $user)
+            return redirect(route('index'));
+
+        $user->confirmed = true;
+        $user->confirmation_code = null;
+        $user->save();
+
+        return redirect(route('index'))->with('exito', 'Has confirmado correctamente tu correo!');
+    }
+
 }

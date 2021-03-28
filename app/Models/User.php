@@ -21,6 +21,8 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+        'dni',
+        'confirmation_code'
     ];
 
     /**
@@ -56,6 +58,12 @@ class User extends Authenticatable
     public function loginUser(){
 
     }
+
+    static public function getUserAuthCode($code){
+        return DB::table('users')->where('confirmation_code',$code)->first();
+    }
+
+
 
 
 }
