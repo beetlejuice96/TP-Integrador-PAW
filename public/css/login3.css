@@ -26,34 +26,9 @@
 
 }
 
-.input-login{
-    background: transparent;
-    border:0 solid;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    color: #000000;
-    margin: 1rem;
-    padding: 0.5rem;
-    transition: 250ms background ease-in;
-    width: 37vw;
-}
-
-.input-login::placeholder{
-    color: #000000;
-}
-
-.input-login:focus{
-    background: white;
-    color: black;
-    transition: 250ms background ease-in;
-}
-
-input:focus {
-    outline: 0 transparent solid;
-}
-
 .buttonCTA{
     border:0;
-    bottom: 0px;
+    bottom: 0;
 }
 
 form>a{
@@ -84,9 +59,7 @@ form>a{
     border: none;
     text-align: left;
     line-height: 34px;
-    white-space: nowrap;
     font-size: 16px;
-    color: #FFF;
 }
 
 .button-google:before{
@@ -107,3 +80,6 @@ form>a{
 .buttonCTA{
     padding: 0.5rem 3rem;
 }
+
+
+

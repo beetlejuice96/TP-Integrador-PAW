@@ -2,7 +2,7 @@
     ya que el register es muy grande. el clickPath se va a romper siempre :
     https://css-tricks.com/unfortunately-clip-path-path-is-still-a-no-go/
     posibles soluciones : https://www.shapedivider.app/  https://getwaves.io/*/
-.input-login{
+.input-default{
     background: transparent;
     border:0 solid;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -12,21 +12,21 @@
     transition: 250ms background ease-in;
     width: 40vw;
 }
-.input-login::placeholder{
+.input-default::placeholder{
     color: #000000;
 }
 
-.input-login:focus{
+/*FIXME no toma este evento y deberia hacerlo.*/
+.input-default:focus{
     background: white;
     color: black;
     transition: 250ms background ease-in;
-}
-
-input:focus {
     outline: 0 transparent solid;
 }
 
+
 .card-register{
+    display: flex;
     flex-direction: column; /* Para que los elementos se muestren en 1 sola columna*/
     align-items: center;
     text-align: center;
@@ -36,4 +36,5 @@ input:focus {
 .buttonCTA{
     padding: 0.5rem 3rem;
     margin-bottom: 1rem;
+    border:0;
 }

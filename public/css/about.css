@@ -1,0 +1,28 @@
+main{
+    background: var(--yellow-a);
+    height: 100vh;
+}
+
+/*style de about*/
+.about{
+    background: var(--yellow-a);
+}
+.card-about{
+    color: white;
+    background: var(--grey-b);
+    margin: 0.8rem 0.8rem;
+    padding: 0.4rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);;
+    transition: 0.3s;
+    border: none;
+    border-radius: 8px;
+}
+
+.card-about:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5 );
+}
+
+.card-titulo{
+    padding-bottom: 0.7rem;
+    font-weight: bold;
+}
