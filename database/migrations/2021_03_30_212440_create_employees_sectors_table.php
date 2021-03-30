@@ -18,7 +18,7 @@ class CreateEmployeesSectorsTable extends Migration
             $table->unsignedBigInteger('ID_SECTOR');
             $table->foreign('ID_SECTOR')->references('ID_SECTOR')->on('SECTORS');
             $table->unsignedBigInteger('ID_EMPLOYEE');
-            $table->foreign('ID_EMPLOYEE')->references('ID_EMPLOYEE')->on('EMPLOYEE'); 
+            $table->foreign('ID_EMPLOYEE')->references('ID_EMPLOYEE')->on('EMPLOYEES'); 
             //$table->index(['ID_SECTOR','ID_EMPLEADO','ID_TALLER']);
             
             $table->timestamps();
