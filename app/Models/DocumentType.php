@@ -9,7 +9,11 @@ class DocumentType extends Model
 {
     use HasFactory;
 
+    protected $table = 'DOCUMENT_TYPES';
+
     protected $primaryKey = 'ID_DOCUMENT_TYPE';
+
+    protected $guarded = [];
 
     public function personas(){
         return $this->hasMany(Person::class,'ID_DOCUMENT_TYPE');

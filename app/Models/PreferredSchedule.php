@@ -9,9 +9,11 @@ class PreferredSchedule extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'PREFERRED_SCHEDULES';
 
-    protected $primaryKey = 'ID_PREFERRED_SCHEDULE';
+    protected $primaryKey = 'ID_PREFERRED_SCHEDULES';
+
+    protected $guarded = [];
 
     public function pendingAppointment(){
         return $this->belongsTo(PendingAppointment::class,'ID_PENDING_APPOINTMENT');

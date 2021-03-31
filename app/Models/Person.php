@@ -9,6 +9,8 @@ class Person extends Model
 {
     use HasFactory;
 
+    protected $table = 'PERSONS';
+
     protected $primaryKey = 'ID_PERSON';
 
     protected $guarded = [];

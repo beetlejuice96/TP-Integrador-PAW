@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model
 {
+    protected $table = 'VEHICLES';
+
     protected $primaryKey = 'ID_VEHICLE';
 
     protected $guarded = [];

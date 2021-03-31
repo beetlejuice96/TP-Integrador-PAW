@@ -9,7 +9,11 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $table = 'SERVICES';
+
     protected $primaryKey = 'ID_SERVICE';
+
+    protected $guarded = [];
 
     public function pendingAppointments(){
         return $this->belongsToMany(PendingAppointment::class, 'APPOINTMENTS_SERVICES', 'ID_SERVICE', 'ID_PENDING_APPOINTMENT');

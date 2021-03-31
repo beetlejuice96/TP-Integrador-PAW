@@ -9,7 +9,9 @@ class PendingAppointment extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'ID_PENDING_APPOINTMENT';
+    protected $table = 'PENDING_APPOINTMENTS';
+
+    protected $primaryKey = 'ID_PENDING_APPOINTMENTS';
 
     protected $guarded = [];
 

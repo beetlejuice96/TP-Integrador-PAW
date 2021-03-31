@@ -9,9 +9,11 @@ class ConfirmedAppointment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'CONFIRMED_APPOINTMENTS';
 
     protected $primaryKey = 'ID_CONFIRMED_APPOINTMENT';
+
+    protected $guarded = [];
 
     public function pendingAppointment(){
         return $this->belongsTo(PendingAppointment::class,'ID_PENDING_APPOINTMENT');

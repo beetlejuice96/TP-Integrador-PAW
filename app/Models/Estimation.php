@@ -9,7 +9,11 @@ class Estimation extends Model
 {
     use HasFactory;
 
+    protected $table = 'ESTIMATIONS';
+
     protected $primaryKey = 'ID_ESTIMATION';
+
+    protected $guarded = [];
 
     public function vehicle(){
         return $this->belongsTo(Vehicle::class,'ID_VEHICLE');

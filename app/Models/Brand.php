@@ -11,10 +11,12 @@ class Brand extends Model
 
     protected $primaryKey = 'ID_BRAND';
 
+    protected $table = 'BRANDS';
+
     protected $guarded = [];
 
     public function models(){
-        return $this->hasMany(CarModel::class, "ID_BRAND");
+        return $this->hasMany(ModelV::class, "ID_BRAND");
     }
         
 }

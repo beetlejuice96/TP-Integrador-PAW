@@ -9,7 +9,11 @@ class Job extends Model
 {
     use HasFactory;
 
+    protected $table = 'JOBS';
+
     protected $primaryKey = 'ID_JOB';
+
+    protected $guarded = [];
 
     public function service(){
         return $this->belongsTo(Service::class,'ID_SERVICE');
