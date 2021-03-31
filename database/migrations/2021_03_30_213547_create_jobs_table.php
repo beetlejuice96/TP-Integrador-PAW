@@ -23,6 +23,8 @@ class CreateJobsTable extends Migration
             $table->foreign('ID_SERVICE')->references('ID_SERVICE')->on('SERVICES')->onDelete('set null');
             $table->unsignedBigInteger("ID_VEHICLE")->nullable();
             $table->foreign('ID_VEHICLE')->references('ID_VEHICLE')->on('VEHICLES')->onDelete('cascade');
+            $table->unsignedBigInteger('ID_EMPLOYEE');
+            $table->foreign('ID_EMPLOYEE')->references('ID_EMPLOYEE')->on('EMPLOYEES');
             $table->timestamps();
         });
     }
