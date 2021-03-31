@@ -21,8 +21,6 @@ class CreateEmployeeTable extends Migration
             $table->date('BIRTH_DATE')->nullable();
             $table->string('PHONE',50)->nullable();
             $table->string('EMAIL',200)->nullable();
-            $table->unsignedBigInteger('ID_EMPLOYEE_TYPE');
-            $table->foreign('ID_EMPLOYEE_TYPE')->references('ID_EMPLOYEE_TYPE')->on('EMPLOYEE_TYPES');
             $table->timestamps();
         });
     }
