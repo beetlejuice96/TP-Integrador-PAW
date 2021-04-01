@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'ID_USER';
+
+    protected $table = 'USERS';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +22,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'lastname',
         'email',
         'password',
         'dni',
@@ -59,6 +62,9 @@ class User extends Authenticatable
 
     }
 
+    public function person(){
+        return $this->belongsTo(Person::class,'ID_PERSON');
+    }
     static public function getUserAuthCode($code){
         return DB::table('users')->where('confirmation_code',$code)->first();
     }
@@ -66,4 +72,11 @@ class User extends Authenticatable
 
 
 
+    public function roles(){
+        return $this->belongsToMany(Role::class, 'USERS_ROLES', 'ID_USER', 'ID_ROLE');
+    }
+
+    public function pendingAppointments(){
+        return $this->hasMany(PendingAppointment::class,'ID_USER')->orderBy('REQUEST_DATE','DESC');
+    }
 }

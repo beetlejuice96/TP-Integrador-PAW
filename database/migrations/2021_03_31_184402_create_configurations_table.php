@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkshopTable extends Migration
+class CreateConfigurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateWorkshopTable extends Migration
      */
     public function up()
     {
-        Schema::create('WORKSHOPS', function (Blueprint $table) {
-            $table->id('ID_WORKSHOP');
-            $table->string('NAME',200);
-            $table->boolean('ACTIVE');
+        Schema::create('CONFIGURATIONS', function (Blueprint $table) {
+            $table->string("NAME", 30)->primary();
+            $table->text("VALUE");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateWorkshopTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('WORKSHOPS');
+        Schema::dropIfExists('CONFIGURATIONS');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScheduleTable extends Migration
+class CreateDocumentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateScheduleTable extends Migration
      */
     public function up()
     {
-        Schema::create('SCHEDULES', function (Blueprint $table) {
-            $table->id('ID_SCHEDULE');
-            $table->string('DAY',50);
-            $table->time('HOUR_FROM');
-            $table->time('HOUR_TO');
+        Schema::create('DOCUMENT_TYPES', function (Blueprint $table) {
+            $table->id('ID_DOCUMENT_TYPE');
+            $table->string('DOCUMENT_TYPE', 50);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateScheduleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('SCHEDULES');
+        Schema::dropIfExists('DOCUMENT_TYPES');
     }
 }
