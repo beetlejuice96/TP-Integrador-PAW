@@ -58,20 +58,27 @@ class UserController extends Controller
             $this->google_client->setAccessToken($token);
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
-
-            $user = new User();
-            $user->fill([
-                "name" => $googleAccountInfo->getGivenName(),
-                "lastname" => $googleAccountInfo->getFamilyName(),
-                "email" => $googleAccountInfo->getEmail(),
-                /*FIXME deberiamos ver como vamos a registrar bien a un usuario que entra por gmail.
-                *tal vez otra tabla, o tal vez un campo que indique que es de gmail.*/
-                "password" => ""
-            ]);
             //verificar si ya existe.
             if (User::verifierCredentials(['email'=>$googleAccountInfo->getEmail()])) {
                 return view('auth.register')->with('error', 'este usuario ya existe');
             }
+            $persona = $this->getPersonToAssociate([
+                'NAME'=>$googleAccountInfo->getGivenName(),
+                'SURNAME'=>$googleAccountInfo->getFamilyName(),
+                'DOCUMENT_NUMBER'=> 1, //FIXME esta bien que tengan 1 los registrados por email? cualquier cosa que lo cambien desp
+                'EMAIL'=>$googleAccountInfo->getEmail()
+            ]);
+
+            $user = new User();
+            $user->fill([
+                "NAME" => $googleAccountInfo->getGivenName(),
+                "SURNAME" => $googleAccountInfo->getFamilyName(),
+                "EMAIL" => $googleAccountInfo->getEmail(),
+                /*FIXME deberiamos ver como vamos a registrar bien a un usuario que entra por gmail.
+                *tal vez otra tabla, o tal vez un campo que indique que es de gmail.*/
+                "PASSWORD" => ""
+            ]);
+            $user->person()->associate($persona);
             $user->save();
             return view("web.home")->with("exito", "usuario creado con exito!");
         }
