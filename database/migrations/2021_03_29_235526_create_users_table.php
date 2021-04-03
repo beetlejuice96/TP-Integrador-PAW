@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('ID_PERSON')->unique();
             $table->foreign('ID_PERSON')->references('ID_PERSON')->on('PERSONS')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-        
+
         });
     }
 
