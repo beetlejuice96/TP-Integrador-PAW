@@ -6,7 +6,7 @@
     Registrarse
 @endsection
 @section('content')
-    <form action="{{route('registerPost')}}" method="POST" class="form-register">
+    <form action="{{route('register')}}" method="POST" class="form-register">
         @csrf
         <section class="card-register">
 
@@ -20,7 +20,7 @@
              <input type="text" id="lastname" name="lastname" placeholder="Apellido" class="input-default" required autocomplete="apellido">
 
             <!-- <label for="email" >Correo Electrónico</label>-->
-             <input id="email" name="email" value="email" class="input-default" placeholder="example@gmail.com" required autocomplete="email">
+             <input type="email" id="email" name="email" value="email" class="input-default" placeholder="example@gmail.com" required autocomplete="email">
 
              <!--<label for="password" >Contraseña</label>-->
              <input id="password" type="password" name="password" class="input-default" placeholder="Contraseña" required autocomplete="new-password">

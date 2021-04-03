@@ -24,9 +24,9 @@ class UserRegisterPostRequets extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'lastname'=>'required',
-            'email'=>'required|string',
+            'name'=>'required|min:3|max:10',
+            'lastname'=>'required|min:3|max:15',
+            'email'=>'required|string|email',
             'password'=>'required|string',
             'dni'=>'required'
         ];

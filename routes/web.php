@@ -23,7 +23,7 @@ Route::get('/login',[LoginController::class,'login'])->name("login_view");
 Route::post('/login', [LoginController::class,'authenticate'])->name('login');;//redirige al login.
 
 Route::get('/register',[UserController::class,'create'])->name("register"); //redirige al register
-Route::post('/register',[UserController::class,'store'])->name("registerPost");
+Route::post('/register',[UserController::class,'store'])->name("register");
 // E-mail verification
 //Auth::routes(['verify' => true]); //verificacion de correo.
 Route::get('/register/verify/{code}', [UserController::class,'verify']);

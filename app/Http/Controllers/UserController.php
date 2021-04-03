@@ -65,7 +65,7 @@ class UserController extends Controller
             $persona = $this->getPersonToAssociate([
                 'NAME' => $googleAccountInfo->getGivenName(),
                 'SURNAME' => $googleAccountInfo->getFamilyName(),
-                'DOCUMENT_NUMBER' => 1, //FIXME esta bien que tengan 1 los registrados por email? cualquier cosa que lo cambien desp
+                'DOCUMENT_NUMBER' => null, //FIXME esta bien que tengan 1 los registrados por email? cualquier cosa que lo cambien desp
                 'EMAIL' => $googleAccountInfo->getEmail()
             ]);
 
@@ -76,7 +76,8 @@ class UserController extends Controller
                 "EMAIL" => $googleAccountInfo->getEmail(),
                 /*FIXME deberiamos ver como vamos a registrar bien a un usuario que entra por gmail.
                 *tal vez otra tabla, o tal vez un campo que indique que es de gmail.*/
-                "PASSWORD" => ""
+                "PASSWORD" => "",
+                'ACTIVE' => true
             ]);
             $user->person()->associate($persona);
             $user->save();
@@ -160,6 +161,7 @@ class UserController extends Controller
             });*/
             return view('web.home')->with("exito", "usuario creado con exito!");
         } catch (QueryException $ex) {
+            //FIXME: Usar logs en un futuro.
             return view('web.home')->with('error', "no se pudo crear el usuario");
         }
     }
