@@ -15,6 +15,12 @@ class Person extends Model
 
     protected $guarded = [];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['NAME','SURNAME', 'DOCUMENT_NUMBER'];
     //public static function getByDni($dni){
     //    return self::where("NRO_DOC", $dni)->get();
     //}
@@ -22,7 +28,7 @@ class Person extends Model
     //public static function getByExactNameAndSurname($nombre, $apellido){
     //    return self::where([["NOMBRE", $nombre], ["APELLIDO", $apellido]])->get();
     //}
-    
+
     public function documentType(){
         return $this->belongsTo(DocumentType::class, "ID_DOCUMENT_TYPE");
     }

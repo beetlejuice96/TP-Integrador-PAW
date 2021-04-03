@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegisterPostRequets;
+use App\Models\Person;
 use App\Models\User;
 use Google_Client;
 use Google_Service_Oauth2;
@@ -57,6 +58,7 @@ class UserController extends Controller
             $this->google_client->setAccessToken($token);
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
+
             $user = new User();
             $user->fill([
                 "name" => $googleAccountInfo->getGivenName(),
@@ -77,6 +79,13 @@ class UserController extends Controller
         return view('auth.register', compact('google_client'));
     }
 
+
+    // FIXME popdria er una parte de utils
+    public function createConfirmationCode(){
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, 25);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -85,35 +94,44 @@ class UserController extends Controller
      */
     public function store(UserRegisterPostRequets $request)
     {
-        //
-
         $dates = $request->validated();
-        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $dates['confirmation_code'] = substr(str_shuffle(str_repeat($pool, 5)), 0, 25);
-        //verificar si ya existe.
+        $dates['confirmation_code'] = $this->createConfirmationCode();
 
+        //verificar si ya existe.
         if (User::verifierCredentials(['email' => $dates['email']])) {
             return view('auth.register')->with('error', 'este usuario ya existe');
         }
 
+        //creo persona
+        $persona = new Person();
+        $persona->fill([
+           'NAME'=>$dates['name'],
+           'SURNAME'=>$dates['lastname'],
+           //FIXME: todavia me falta poner el tipo de dni
+           'DOCUMENT_NUMBER'=>$dates['dni']
+        ]);
+        $persona->save();
+
         $user = new User();
         $dates['password'] = Hash::make($dates['password']);
         $user->fill([
-            'name' => $dates['name'],
-            'lastname' => $dates['lastname'],
-            'password' => $dates['password'],
-            'email' => $dates['email'],
-            'confirmation_code'=>$dates['confirmation_code']
+            'PASSWORD' => $dates['password'],
+            'EMAIL' => $dates['email'],
+            'ACTIVE'=>true
+            //'confirmation_code'=>$dates['confirmation_code']
         ]);
+        $user->person()->associate($persona);
 
         try {
             $user->save();
+
             //FIXME no me devuelve error pero tampoco manda el mail, talvez el problema este en el .env
             Mail::send('auth.verification', $dates, function($message) use ($dates) {
                 $message->to($dates['email'], $dates['name'])->subject('Por favor confirma tu correo');
             });
             return view('web.home')->with("exito", "usuario creado con exito!");
         } catch (QueryException $ex) {
+            dd($ex);
             return view('web.home')->with('error', "no se pudo crear el usuario");
         }
     }

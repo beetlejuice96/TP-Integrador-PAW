@@ -21,11 +21,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'dni',
-        'confirmation_code'
+        'PASSWORD',
+        'EMAIL',
+        'ACTIVE'
     ];
 
     /**
@@ -50,16 +48,8 @@ class User extends Authenticatable
     //verifico que el user exista en la bd.
     static public function verifierCredentials($credentials): bool
     {
-        return DB::table('users')
-            ->where('email',$credentials['email'])->exists();
-    }
-
-    public function getUser(String $username ){
-        //return User::where('name',$username)->first;
-    }
-
-    public function loginUser(){
-
+        return DB::table('USERS')
+            ->where('EMAIL',$credentials['email'])->exists();
     }
 
     public function person(){
@@ -68,9 +58,6 @@ class User extends Authenticatable
     static public function getUserAuthCode($code){
         return DB::table('users')->where('confirmation_code',$code)->first();
     }
-
-
-
 
     public function roles(){
         return $this->belongsToMany(Role::class, 'USERS_ROLES', 'ID_USER', 'ID_ROLE');
