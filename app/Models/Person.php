@@ -21,7 +21,7 @@ class Person extends Model
      *
      * @var array
      */
-    protected $fillable = ['NAME','SURNAME', 'DOCUMENT_NUMBER','EMAIL'];
+    protected $fillable = ['NAME', 'SURNAME', 'DOCUMENT_NUMBER', 'EMAIL'];
     //public static function getByDni($dni){
     //    return self::where("NRO_DOC", $dni)->get();
     //}
@@ -30,22 +30,26 @@ class Person extends Model
     //    return self::where([["NOMBRE", $nombre], ["APELLIDO", $apellido]])->get();
     //}
 
-    public static function getPerson($dates){
-        return  DB::table('PERSONS')
-            ->where('NAME',$dates['NAME'])
-            ->where('SURNAME',$dates['SURNAME'])
-            ->where('EMAIL',$dates['EMAIL'])->first();
+    public static function getPerson($dates)
+    {
+        return DB::table('PERSONS')
+            ->where('NAME', $dates['NAME'])
+            ->where('SURNAME', $dates['SURNAME'])
+            ->where('EMAIL', $dates['EMAIL'])->first();
     }
 
-    public function documentType(){
+    public function documentType()
+    {
         return $this->belongsTo(DocumentType::class, "ID_DOCUMENT_TYPE");
     }
 
-    public function vehicles(){
-        return $this->hasMany(Vehicle::class,'ID_PERSON');
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'ID_PERSON');
     }
 
-    public function user(){
-        return $this->hasOne(User::class,'ID_PERSON');
+    public function user()
+    {
+        return $this->hasOne(User::class, 'ID_PERSON');
     }
 }

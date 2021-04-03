@@ -59,14 +59,14 @@ class UserController extends Controller
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
             //verificar si ya existe.
-            if (User::verifierCredentials(['email'=>$googleAccountInfo->getEmail()])) {
+            if (User::verifierCredentials(['email' => $googleAccountInfo->getEmail()])) {
                 return view('auth.register')->with('error', 'este usuario ya existe');
             }
             $persona = $this->getPersonToAssociate([
-                'NAME'=>$googleAccountInfo->getGivenName(),
-                'SURNAME'=>$googleAccountInfo->getFamilyName(),
-                'DOCUMENT_NUMBER'=> 1, //FIXME esta bien que tengan 1 los registrados por email? cualquier cosa que lo cambien desp
-                'EMAIL'=>$googleAccountInfo->getEmail()
+                'NAME' => $googleAccountInfo->getGivenName(),
+                'SURNAME' => $googleAccountInfo->getFamilyName(),
+                'DOCUMENT_NUMBER' => 1, //FIXME esta bien que tengan 1 los registrados por email? cualquier cosa que lo cambien desp
+                'EMAIL' => $googleAccountInfo->getEmail()
             ]);
 
             $user = new User();
@@ -88,25 +88,28 @@ class UserController extends Controller
 
 
     // FIXME popdria er una parte de utils
-    public function createConfirmationCode(){
+    public function createConfirmationCode()
+    {
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         return substr(str_shuffle(str_repeat($pool, 5)), 0, 25);
     }
-    public function getPersonToAssociate($dates){
+
+    public function getPersonToAssociate($dates)
+    {
         $persona = Person::getPerson([
-            'NAME'=>$dates['NAME'],
-            'SURNAME'=>$dates['SURNAME'],
-            'EMAIL'=>$dates['EMAIL']
+            'NAME' => $dates['NAME'],
+            'SURNAME' => $dates['SURNAME'],
+            'EMAIL' => $dates['EMAIL']
         ]);
-        if($persona !== null){
+        if ($persona !== null) {
             return $persona;
-        }else{
-            $persona2  = new Person();
+        } else {
+            $persona2 = new Person();
             $persona2->fill([
-                'NAME'=>$dates['NAME'],
-                'SURNAME'=>$dates['SURNAME'],
-                'DOCUMENT_NUMBER'=>$dates['DOCUMENT_NUMBER'],
-                'EMAIL'=>$dates['EMAIL']
+                'NAME' => $dates['NAME'],
+                'SURNAME' => $dates['SURNAME'],
+                'DOCUMENT_NUMBER' => $dates['DOCUMENT_NUMBER'],
+                'EMAIL' => $dates['EMAIL']
             ]);
             $persona2->save();
             return $persona2;
@@ -133,10 +136,10 @@ class UserController extends Controller
 
         //creo persona, si no encuentra una persona que coincida con los datos pasados crea una nueva y la devuelve
         $persona = $this->getPersonToAssociate([
-            'NAME'=>$dates['name'],
-            'SURNAME'=>$dates['lastname'],
-            'DOCUMENT_NUMBER'=>$dates['dni'],
-            'EMAIL'=>$dates['email']
+            'NAME' => $dates['name'],
+            'SURNAME' => $dates['lastname'],
+            'DOCUMENT_NUMBER' => $dates['dni'],
+            'EMAIL' => $dates['email']
         ]);
 
         //creo user
@@ -145,7 +148,7 @@ class UserController extends Controller
         $user->fill([
             'PASSWORD' => $dates['password'],
             'EMAIL' => $dates['email'],
-            'ACTIVE'=>true
+            'ACTIVE' => true
             //'confirmation_code'=>$dates['confirmation_code']
         ]);
         $user->person()->associate($persona);
@@ -211,7 +214,7 @@ class UserController extends Controller
     {
         $user = User::getUserAuthCode($code);
 
-        if (! $user)
+        if (!$user)
             return redirect(route('index'));
 
         $user->confirmed = true;

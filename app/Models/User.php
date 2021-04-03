@@ -49,21 +49,26 @@ class User extends Authenticatable
     static public function verifierCredentials($credentials): bool
     {
         return DB::table('USERS')
-            ->where('EMAIL',$credentials['email'])->exists();
+            ->where('EMAIL', $credentials['email'])->exists();
     }
 
-    public function person(){
-        return $this->belongsTo(Person::class,'ID_PERSON');
-    }
-    static public function getUserAuthCode($code){
-        return DB::table('users')->where('confirmation_code',$code)->first();
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'ID_PERSON');
     }
 
-    public function roles(){
+    static public function getUserAuthCode($code)
+    {
+        return DB::table('users')->where('confirmation_code', $code)->first();
+    }
+
+    public function roles()
+    {
         return $this->belongsToMany(Role::class, 'USERS_ROLES', 'ID_USER', 'ID_ROLE');
     }
 
-    public function pendingAppointments(){
-        return $this->hasMany(PendingAppointment::class,'ID_USER')->orderBy('REQUEST_DATE','DESC');
+    public function pendingAppointments()
+    {
+        return $this->hasMany(PendingAppointment::class, 'ID_USER')->orderBy('REQUEST_DATE', 'DESC');
     }
 }
