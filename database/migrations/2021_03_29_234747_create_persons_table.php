@@ -21,7 +21,7 @@ class CreatePersonsTable extends Migration
             $table->date('BIRTH_DATE')->nullable();
             $table->string('STREET', 200)->nullable();
             $table->integer('STREET_NUMBER')->nullable();
-            $table->string('LOCALIDAD', 200)->nullable();
+            $table->string('LOCALITY', 200)->nullable();
             $table->string('COUNTRY', 200)->nullable();
             $table->string('PHONE', 50)->nullable();
             $table->string('EMAIL', 200)->nullable();
