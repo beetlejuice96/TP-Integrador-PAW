@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Person extends Model
 {
@@ -20,7 +21,7 @@ class Person extends Model
      *
      * @var array
      */
-    protected $fillable = ['NAME','SURNAME', 'DOCUMENT_NUMBER'];
+    protected $fillable = ['NAME','SURNAME', 'DOCUMENT_NUMBER','EMAIL'];
     //public static function getByDni($dni){
     //    return self::where("NRO_DOC", $dni)->get();
     //}
@@ -28,6 +29,13 @@ class Person extends Model
     //public static function getByExactNameAndSurname($nombre, $apellido){
     //    return self::where([["NOMBRE", $nombre], ["APELLIDO", $apellido]])->get();
     //}
+
+    public static function getPerson($dates){
+        return  DB::table('PERSONS')
+            ->where('NAME',$dates['NAME'])
+            ->where('SURNAME',$dates['SURNAME'])
+            ->where('EMAIL',$dates['EMAIL'])->first();
+    }
 
     public function documentType(){
         return $this->belongsTo(DocumentType::class, "ID_DOCUMENT_TYPE");

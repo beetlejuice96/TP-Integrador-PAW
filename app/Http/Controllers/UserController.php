@@ -85,6 +85,27 @@ class UserController extends Controller
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         return substr(str_shuffle(str_repeat($pool, 5)), 0, 25);
     }
+    public function getPersonToAssociate($dates){
+        $persona = Person::getPerson([
+            'NAME'=>$dates['NAME'],
+            'SURNAME'=>$dates['SURNAME'],
+            'EMAIL'=>$dates['EMAIL']
+        ]);
+        if($persona !== null){
+            return $persona;
+        }else{
+            $persona2  = new Person();
+            $persona2->fill([
+                'NAME'=>$dates['NAME'],
+                'SURNAME'=>$dates['SURNAME'],
+                'DOCUMENT_NUMBER'=>$dates['DOCUMENT_NUMBER'],
+                'EMAIL'=>$dates['EMAIL']
+            ]);
+            $persona2->save();
+            return $persona2;
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -94,24 +115,24 @@ class UserController extends Controller
      */
     public function store(UserRegisterPostRequets $request)
     {
+        //valido que los campos que necesito esten en el request
         $dates = $request->validated();
         $dates['confirmation_code'] = $this->createConfirmationCode();
 
-        //verificar si ya existe.
+        //verificar si ya existe el user.
         if (User::verifierCredentials(['email' => $dates['email']])) {
             return view('auth.register')->with('error', 'este usuario ya existe');
         }
 
-        //creo persona
-        $persona = new Person();
-        $persona->fill([
-           'NAME'=>$dates['name'],
-           'SURNAME'=>$dates['lastname'],
-           //FIXME: todavia me falta poner el tipo de dni
-           'DOCUMENT_NUMBER'=>$dates['dni']
+        //creo persona, si no encuentra una persona que coincida con los datos pasados crea una nueva y la devuelve
+        $persona = $this->getPersonToAssociate([
+            'NAME'=>$dates['name'],
+            'SURNAME'=>$dates['lastname'],
+            'DOCUMENT_NUMBER'=>$dates['dni'],
+            'EMAIL'=>$dates['email']
         ]);
-        $persona->save();
 
+        //creo user
         $user = new User();
         $dates['password'] = Hash::make($dates['password']);
         $user->fill([
@@ -121,17 +142,14 @@ class UserController extends Controller
             //'confirmation_code'=>$dates['confirmation_code']
         ]);
         $user->person()->associate($persona);
-
         try {
             $user->save();
-
-            //FIXME no me devuelve error pero tampoco manda el mail, talvez el problema este en el .env
-            Mail::send('auth.verification', $dates, function($message) use ($dates) {
+            //FIXME ahora tengo otro problema, creo que tiene que ver con la autenticacion
+            /*Mail::send('auth.verification', $dates, function($message) use ($dates) {
                 $message->to($dates['email'], $dates['name'])->subject('Por favor confirma tu correo');
-            });
+            });*/
             return view('web.home')->with("exito", "usuario creado con exito!");
         } catch (QueryException $ex) {
-            dd($ex);
             return view('web.home')->with('error', "no se pudo crear el usuario");
         }
     }
