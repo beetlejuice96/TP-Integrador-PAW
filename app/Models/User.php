@@ -48,7 +48,7 @@ class User extends Authenticatable
     static public function verifierCredentials($credentials): bool
     {
         return DB::table('USERS')
-            ->where('EMAIL', $credentials['email'])->exists();
+            ->where('EMAIL', $credentials['EMAIL'])->exists();
     }
 
     public function person()
@@ -56,13 +56,14 @@ class User extends Authenticatable
         return $this->belongsTo(Person::class, 'ID_PERSON');
     }
 
-    public function getUser(String $username ){
-        //return User::where('name',$username)->first;
+    static public function getUserWithEmail(string $email)
+    {
+        return User::all()->where('EMAIL', '=', $email)->first();
     }
 
     static public function getUserAuthCode($code)
     {
-        return DB::table('users')->where('confirmation_code', $code)->first();
+        return DB::table('USERS')->where('confirmation_code', $code)->first();
     }
 
     public function roles()

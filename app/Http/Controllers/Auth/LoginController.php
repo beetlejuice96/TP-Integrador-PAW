@@ -112,11 +112,9 @@ class LoginController extends Controller
     /**
      * @param LoginPostRequest $request
      * @return Application|RedirectResponse|Redirector
-     * @throws ValidationException
      */
     public function authenticate(LoginPostRequest $request)
     {
-
         $credentials = $request->validated();
         $result = User::verifierCredentials($credentials); //mando a verificar estas credenciales al usuario.
         if ($result == false) {
@@ -146,30 +144,23 @@ class LoginController extends Controller
             $this->google_client->setAccessToken($token);
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
-            //hasta este momento puedo recuperar los datos de la persona que se loggea.
-            /*lo que hice aca es guardar un user para con mi gmail para poder probar el login.
-             * $user = new User();
-            $user->fill([
-               'name'=>$googleAccountInfo->getName(),
-               'email'=>$googleAccountInfo->getEmail(),
-               'password'=> 'prueba123'
-            ]);
-            $user->save();*/
-
             $credentials = [
-                'email'=>$googleAccountInfo->getEmail()
+                'EMAIL' => $googleAccountInfo->getEmail()
             ];
             $userExiste = User::verifierCredentials($credentials);
-            if ($userExiste){
-                return view('web.home');
+            if (!$userExiste) {
+                $google_client = $this->google_client;
+                return back()->with(compact('google_client'))->with('error', 'Usuario o password no corresponden a usuario activo.');
             }
+            //logueo el usuario solo por id pq con ATTEMP verifica la contraseña, la cual si se esta logueando por gmail no tiene.
+            $user = User::getUserWithEmail($credentials['EMAIL']);
             //TODO se puede seguir redirigiendo a otra pag y cargando estos datos en algun lado.
-            $google_client = $this->google_client;
-            return view('auth.login', compact('google_client'))->with('error', 'usuario inexistente');
+            if (Auth::loginUsingId($user->getAttribute("ID_USER"))) {
+                return redirect(route('index'))->with('user-logueado', "Bienvenido!!");
+            }
         }
         $google_client = $this->google_client;
         return view('auth.login', compact('google_client'));
-
     }
 
     public function username() //Devuelve el campo por el cual se logueara el usuario

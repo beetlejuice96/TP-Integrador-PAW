@@ -59,7 +59,7 @@ class UserController extends Controller
             $googleAuth = new Google_Service_Oauth2($this->google_client);
             $googleAccountInfo = $googleAuth->userinfo->get();
             //verificar si ya existe.
-            if (User::verifierCredentials(['email' => $googleAccountInfo->getEmail()])) {
+            if (User::verifierCredentials(['EMAIL' => $googleAccountInfo->getEmail()])) {
                 return view('auth.register')->with('error', 'este usuario ya existe');
             }
             $persona = $this->getPersonToAssociate([
@@ -131,7 +131,7 @@ class UserController extends Controller
         $dates['confirmation_code'] = $this->createConfirmationCode();
 
         //verificar si ya existe el user.
-        if (User::verifierCredentials(['email' => $dates['email']])) {
+        if (User::verifierCredentials(['EMAIL' => $dates['email']])) {
             return view('auth.register')->with('error', 'este usuario ya existe');
         }
 
