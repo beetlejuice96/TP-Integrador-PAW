@@ -21,9 +21,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'PASSWORD',
+        'EMAIL',
     ];
 
     /**
@@ -48,27 +47,27 @@ class User extends Authenticatable
     //verifico que el user exista en la bd.
     static public function verifierCredentials($credentials): bool
     {
-        return DB::table('users')
-            ->where('email',$credentials['email'])->exists();
+        return DB::table('USERS')
+            ->where('EMAIL', $credentials['email'])->exists();
     }
 
-    public function getUser(String $username ){
-        //return User::where('name',$username)->first;
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'ID_PERSON');
     }
 
-    public function loginUser(){
-
+    static public function getUserAuthCode($code)
+    {
+        return DB::table('users')->where('confirmation_code', $code)->first();
     }
 
-    public function person(){
-        return $this->belongsTo(Person::class,'ID_PERSON');
-    }
-
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsToMany(Role::class, 'USERS_ROLES', 'ID_USER', 'ID_ROLE');
     }
 
-    public function pendingAppointments(){
-        return $this->hasMany(PendingAppointment::class,'ID_USER')->orderBy('REQUEST_DATE','DESC');
+    public function pendingAppointments()
+    {
+        return $this->hasMany(PendingAppointment::class, 'ID_USER')->orderBy('REQUEST_DATE', 'DESC');
     }
 }
