@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasswordResetsTable extends Migration
+class CreateDocumentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        /* NO SE PARA QUE ESTÁ ESTA TABLA TODAVIA */
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('DOCUMENT_TYPES', function (Blueprint $table) {
+            $table->id('ID_DOCUMENT_TYPE');
+            $table->string('DOCUMENT_TYPE', 50);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('DOCUMENT_TYPES');
     }
 }
