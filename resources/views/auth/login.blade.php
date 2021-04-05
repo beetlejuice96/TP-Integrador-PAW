@@ -21,6 +21,7 @@
             @csrf
             <p class="font-white"> Log in</p>
             <!--<label for="email">Email
+                
             </label>-->
             <input class="input-default" name="email" id="email" type="text" placeholder="Username" required autofocus>
 
