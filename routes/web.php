@@ -5,8 +5,6 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-use function Psy\debug;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +17,6 @@ use function Psy\debug;
 */
 
 Route::get('/', function () {
-    Log::debug('Someone entered to home');
     return view('web.home');
 })->name("index");
 
