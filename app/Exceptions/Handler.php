@@ -39,9 +39,9 @@ class Handler extends ExceptionHandler
             $filePath = $e->getFile();
             if ($this->areGithubVariablesSet()){
                if(!$this->existsIssueInFile($filePath)){
-                    Http::withBasicAuth("AgustinNormand",
-                    "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")->post(
-                        "https://api.github.com/repos/beetlejuice96/TP-Integrador-PAW/issues", [
+                    Http::withBasicAuth(env("GITHUB_USERNAME"),
+                    env("GITHUB_TOKEN"))->post(
+                        env("GITHUB_REPO"), [
                         "title" => "Bug in " . $filePath,
                         "body" => $e->__toString()
                     ]);
