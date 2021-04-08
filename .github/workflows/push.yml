@@ -28,6 +28,10 @@ jobs:
           envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           envkey_ID_CLIENT_GOOGLE: ${{ secrets.ID_CLIENT_GOOGLE }}
           envkey_SECRET_GOOGLE: ${{ secrets.SECRET_GOOGLE }}
+          envkey_LOG_SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
+          envkey_LOG_LEVEL: "DEBUG"
+          envkey_LOG_CHANNEL: "stack"
+
           file_name: .env
 
       - name: Login to DockerHub
