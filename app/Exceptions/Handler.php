@@ -37,14 +37,13 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             $filePath = $e->getFile();
-            if ($this->areGithubVariablesSet()){
+            if($this->areGithubVariablesSet()){
                if(!$this->existsIssueInFile($filePath)){
-                    Http::withBasicAuth(env("GITHUB_USERNAME"),
-                    env("GITHUB_TOKEN"))->post(
-                        env("GITHUB_REPO"), [
+                    Http::withBasicAuth(env("GITHUB_USERNAME"),env("GITHUB_TOKEN"))
+                    ->post(env("GITHUB_REPO"), [
                         "title" => "Bug in " . $filePath,
-                        "body" => $e->__toString()
-                    ]);
+                        "body" => $e->__toString()]
+                    );
                 }
             }
         });
@@ -65,9 +64,8 @@ class Handler extends ExceptionHandler
         $result = false;
         $searchedTitle = "Bug in " . $fileName;
 
-        $issues = Http::withBasicAuth("AgustinNormand",
-            "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")->get(
-                "https://api.github.com/repos/beetlejuice96/TP-Integrador-PAW/issues");
+        $issues = Http::withBasicAuth(env("GITHUB_USERNAME"),env("GITHUB_TOKEN"))
+                  ->get(env("GITHUB_REPO"));
 
        foreach($issues->json() as $issue){
            $issueTitle = $issue["title"];
