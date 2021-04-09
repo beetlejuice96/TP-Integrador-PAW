@@ -50,3 +50,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: dilanbernabe/mechanicsheep:latest
+          
