@@ -28,9 +28,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->google_client = new Google_Client();
-        $this->google_client->setClientId(env('CLIENT_ID_REGISTER'));
-        $this->google_client->setClientSecret(env('CLIENT_SECRET_REGISTER'));
-        $this->google_client->setRedirectUri(env("REDIRECT_URI_REGISTER"));
+        $this->google_client->setClientId(env('GOOGLE_CLIENT_ID'));
+        $this->google_client->setClientSecret(env('GOOGLE_SECRET'));
+        $this->google_client->setRedirectUri(env("GOOGLE_REDIRECT_URI"));
         $this->google_client->addScope('email');
         $this->google_client->addScope('profile');
     }
