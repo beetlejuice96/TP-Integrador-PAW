@@ -28,7 +28,7 @@ jobs:
           envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           envkey_GOOGLE_CLIENT_ID: ${{ secrets.ID_CLIENT_GOOGLE }}
           envkey_GOOGLE_SECRET: ${{ secrets.SECRET_GOOGLE }}
-          envkey_GOOGLE_REDIRECT_URI: "https://develop.mechanicsheep.com.ar/oauth2callback.php"
+          envkey_GOOGLE_REDIRECT_URI: "https://develop.mechanicsheep.com.ar"
           envkey_LOG_SLACK_WEBHOOK_URL: ${{ secrets.LOG_SLACK_WEBHOOK_URL }}
           envkey_LOG_LEVEL: "debug"
           envkey_LOG_CHANNEL: "stack"
