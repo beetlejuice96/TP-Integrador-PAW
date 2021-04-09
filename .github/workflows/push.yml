@@ -31,9 +31,9 @@ jobs:
           envkey_LOG_SLACK_WEBHOOK_URL: ${{ secrets.LOG_SLACK_WEBHOOK_URL }}
           envkey_LOG_LEVEL: "debug"
           envkey_LOG_CHANNEL: "stack"
-          envkey_GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-          envkey_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          envkey_GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+          envkey_GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
+          envkey_GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          envkey_GITHUB_REPO: ${{ secrets.GH_REPO }}
 
           file_name: .env
 
