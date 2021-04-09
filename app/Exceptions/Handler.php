@@ -37,12 +37,13 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             $filePath = $e->getFile();
+            $body = $e->__toString();
             if($this->areGithubVariablesSet()){
-               if(!$this->existsIssueInFile($filePath)){
+               if(!$this->existsIssueInFileWithBody($filePath, $body)){
                     Http::withBasicAuth(env("GITHUB_USERNAME"),env("GITHUB_TOKEN"))
                     ->post(env("GITHUB_REPO"), [
                         "title" => "Bug in " . $filePath,
-                        "body" => $e->__toString()]
+                        "body" => $body]
                     );
                 }
             }
@@ -57,7 +58,7 @@ class Handler extends ExceptionHandler
                !is_null(env("GITHUB_REPO"));
     }
 
-    private function existsIssueInFile($fileName)
+    private function existsIssueInFileWithBody($fileName, $searchedBody)
     {
         /* Esta funcion hace que no cree muchos issues para un mismo archivo */
 
@@ -69,7 +70,8 @@ class Handler extends ExceptionHandler
 
        foreach($issues->json() as $issue){
            $issueTitle = $issue["title"];
-           if($issueTitle == $searchedTitle){
+           $issueBody = $issue["body"];
+           if($issueTitle == $searchedTitle && $issueBody == $searchedBody){
                $result = true;
                break;
            }
