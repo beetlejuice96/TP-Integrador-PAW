@@ -54,8 +54,11 @@ class Handler extends ExceptionHandler
 
     private function areGithubVariablesSet(){
         return !is_null(env("GITHUB_USERNAME")) &&
+               (env("GITHUB_USERNAME") != "") &&
                !is_null(env("GITHUB_TOKEN")) &&
-               !is_null(env("GITHUB_REPO"));
+               (env("GITHUB_TOKEN") != "") &&
+               !is_null(env("GITHUB_REPO")) &&
+               (env("GITHUB_REPO") != "");
     }
 
     private function existsIssueInFileWithBody($fileName, $searchedBody)
