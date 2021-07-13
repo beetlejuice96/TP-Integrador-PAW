@@ -24,7 +24,7 @@ WORKDIR /var/www
 
 #USER root
 
-COPY . .
+ADD SourceCode/ .
 
 RUN chown -R www-data:www-data /var/www
 

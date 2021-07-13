@@ -1,7 +1,0 @@
-[Unit]
-Description=Pull CICD Service
-
-[Service]
-WorkingDirectory=/home/agustin/TP-Integrador-PAW/
-Restart=on-failure
-ExecStart=/usr/bin/bash /home/agustin/TP-Integrador-PAW/pull.sh

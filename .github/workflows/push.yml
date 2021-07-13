@@ -2,7 +2,8 @@ name: Build App Container & Push to Dockerhub
 
 on:
   push:
-    branches: [ main ]
+    paths:
+    - 'SourceCode/**'
     
 jobs:
   deploy:
